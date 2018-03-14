@@ -1,0 +1,22 @@
+
+<table *ngIf="materials?.length > 0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Critical</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let material of materials">
+      <td>{{ material.name }}</td>
+      <td>{{ material.critical }}</td>
+      <td>{{ material.quantity }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="materials?.length == 0">
+  There is no materials.
+</div>
