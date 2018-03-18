@@ -1,0 +1,24 @@
+.nav {
+    margin-top: 30px;
+}
+
+.nav ul a {
+    padding: 20px 20px 20px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #e4d7d7;
+    display: block;
+    border-top: 0.5px solid;
+    border-top-color: #e4d7d7a1;
+    border-bottom: 0.5px solid;
+    border-bottom-color: #e4d7d7a1;
+}
+
+.nav ul li:hover {
+    opacity: 0.5;
+}
+
+.glyphicon {
+    margin-left: 10px;
+    float: right;
+}

@@ -1,0 +1,25 @@
+<table *ngIf="workshops?.length > 0">
+  <thead>
+    <tr>
+      <th>מחיר לאדם</th>
+      <th>תאריך</th>
+      <th>זמן סדנא</th>
+      <th>כמות משתתפים</th>
+      <th>שם הסדנא</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let workshop of workshops">
+      <td>{{ workshop.price }}</td>
+      <td>{{ workshop.date }}</td>
+      <td>{{ workshop.duration }}</td>
+      <td>{{ workshop.participants }}</td>
+      <td>{{ workshop.name }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="workshops?.length == 0">
+  There is no workshops.
+</div>

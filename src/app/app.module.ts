@@ -10,8 +10,15 @@ import {MatTableModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { MaterialComponent } from './material/material.component';
 import { MaterialService } from './services/material.service';
+import { WorkshopService } from './services/workshop.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddMaterialComponent } from './add-material/add-material.component';
+import { HeaderComponent } from './header/header.component';
+import { AsideComponent } from './aside/aside.component';
+import { AsideNavComponent } from './aside-nav/aside-nav.component';
+import { MainComponent } from './main/main.component';
+import { WorkshopComponent } from './workshop/workshop.component';
+import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +26,18 @@ import { AddMaterialComponent } from './add-material/add-material.component';
     MaterialComponent,
     NavbarComponent,
     AddMaterialComponent,
+    HeaderComponent,
+    AsideComponent,
+    AsideNavComponent,
+    MainComponent,
+    WorkshopComponent,
+    AddWorkshopComponent,
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
     AngularFireAuthModule,AngularFireStorageModule,FormsModule
   ],
-  providers: [MaterialService],
+  providers: [MaterialService,WorkshopService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

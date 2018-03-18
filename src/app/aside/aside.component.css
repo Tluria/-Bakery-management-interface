@@ -1,0 +1,22 @@
+.aside {
+    background: #2f3542;
+    width: 15%;
+    float: left;
+    height: 700px;
+}
+
+.logo {
+    text-align: center;
+    padding-top: 10px;
+    height: 20%;
+}
+
+.logo img {
+    border-radius: 100%;
+}
+
+app-aside-nav {
+    text-align: center;
+    margin-top: 5px;
+    height: 80%;
+}

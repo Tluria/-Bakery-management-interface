@@ -1,0 +1,30 @@
+<div class="card workshop">
+  <div class="card-content">
+    <span class="card-title">הוספת סדנא</span>
+    <form (ngSubmit)="onSubmit()" class="col s6">
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text" name="name" [(ngModel)]="workshop.name">
+          <label for="name">שם הסדנא</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" name="date" [(ngModel)]="workshop.date">
+          <label for="date">תאריך</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" name="duration" [(ngModel)]="workshop.duration">
+          <label for="duration">זמן סדנא</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="number" name="participants" [(ngModel)]="workshop.participants">
+          <label for="participants">כמות משתתפים</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="number" name="price" [(ngModel)]="workshop.price">
+          <label for="price">מחיר לאדם</label>
+        </div>
+        <p><input type="submit" value="הוספה" class="btn"></p>
+      </div>
+    </form>
+  </div>
+</div>
