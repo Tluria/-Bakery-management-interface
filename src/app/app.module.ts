@@ -19,6 +19,7 @@ import { AsideNavComponent } from './aside-nav/aside-nav.component';
 import { MainComponent } from './main/main.component';
 import { WorkshopComponent } from './workshop/workshop.component';
 import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
