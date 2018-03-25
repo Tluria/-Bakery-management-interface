@@ -16,9 +16,20 @@ export class AddWorkshopComponent implements OnInit {
     price: null
   }
 
-  constructor(private workshopService:WorkshopService) { }
+  constructor(private workshopService: WorkshopService) { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    if(this.workshop.date != '' && this.workshop.duration != '' && this.workshop.name != ''
+     && this.workshop.participants != null && this.workshop.price != null){
+       this.workshopService.addWorkshop(this.workshop);
+       this.workshop.name= '';
+       this.workshop.date= '';
+       this.workshop.duration= '';
+       this.workshop.participants= null;
+       this.workshop.price= null;
+     }
+  }
 }
