@@ -19,6 +19,9 @@ import { AsideNavComponent } from './aside-nav/aside-nav.component';
 import { MainComponent } from './main/main.component';
 import { WorkshopComponent } from './workshop/workshop.component';
 import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
+import { RouterModule } from '@angular/router';
+import { HomeComponentComponent } from './home-component/home-component.component';
+import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 
 
 @NgModule({
@@ -33,10 +36,18 @@ import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
+    HomeComponentComponent,
+    EditWorkshopComponent,
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
-    AngularFireAuthModule,AngularFireStorageModule,FormsModule
+    AngularFireAuthModule,AngularFireStorageModule,FormsModule,
+    RouterModule.forRoot([
+      {path: '', component: HomeComponentComponent},
+      {path: 'workshops', component: WorkshopComponent},
+      {path: 'workshops/create', component: AddWorkshopComponent},
+      {path: 'workshops/:id/edit', component: EditWorkshopComponent},
+    ])
   ],
   providers: [MaterialService,WorkshopService],
   bootstrap: [AppComponent]
