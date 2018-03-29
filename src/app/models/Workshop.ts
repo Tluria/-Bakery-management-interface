@@ -5,4 +5,4 @@ export interface Workshop {
     duration?:string;
     participants?:number;
     price?:number;
-    }
+}
