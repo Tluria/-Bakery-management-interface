@@ -10,6 +10,9 @@ import {DataSource} from '@angular/cdk/collections';
 })
 export class WorkshopComponent implements OnInit {
   workshops:Workshop[];
+   public num=null;
+   editState: boolean = false;
+   workshopToEdit: Workshop;
   
     constructor(private workshopService: WorkshopService) { }
   
@@ -18,4 +21,32 @@ export class WorkshopComponent implements OnInit {
         this.workshops = workshops;
       })
     }
+
+    horada(){
+      for(var i=0;i<this.workshops.length;i++){
+        
+        this.workshops[i].price-=this.num;
+      }
+    }
+
+    deleteWorkshop(event, workshop: Workshop){
+      this.clearState();
+      this.workshopService.deleteWorkshop(workshop);
+    }
+
+    editWorkshop(event, workshop: Workshop) {
+      this.editState = true;
+      this.workshopToEdit = workshop;
+    }
+
+    updateWorkshop(workshop: Workshop){
+      this.workshopService.updateWorkshop(workshop);
+      this.clearState();
+    }
+
+    clearState(){
+      this.editState = false;
+      this.workshopToEdit = null;
+    }
+
 }

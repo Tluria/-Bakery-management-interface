@@ -1,0 +1,11 @@
+* {
+    text-align: right;
+}
+
+form {
+    text-align: right;
+}
+
+.row .col {
+    float: right;
+}
