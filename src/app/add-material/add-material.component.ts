@@ -19,4 +19,15 @@ export class AddMaterialComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(){
+    if(this.material.name != '' && this.material.id != '' && this.material.quantity!= null && this.material.critical!=null){
+      this.materialService.addMaterial(this.material);
+      this.material.name='';
+      this.material.id='';
+      this.material.quantity=null;
+      this.material.critical=null;
+
+    }
+  }
+
 }
