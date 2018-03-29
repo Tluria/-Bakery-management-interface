@@ -33,10 +33,7 @@ import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
-<<<<<<< HEAD
    
-=======
->>>>>>> 973407467f9dc965d2ffffa10ad28bd6147cd901
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
