@@ -22,6 +22,7 @@ import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
+import { EditMaterialComponent } from './edit-material/edit-material.component';
 
 
 @NgModule({
@@ -36,15 +37,9 @@ import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
-<<<<<<< HEAD
     HomeComponentComponent,
     EditWorkshopComponent,
-=======
-<<<<<<< HEAD
-   
-=======
->>>>>>> 973407467f9dc965d2ffffa10ad28bd6147cd901
->>>>>>> 02da79abc6dd2c62f2639acea1c2395c8ed71472
+    EditMaterialComponent,
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
@@ -54,6 +49,9 @@ import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
       {path: 'workshops', component: WorkshopComponent},
       {path: 'workshops/create', component: AddWorkshopComponent},
       {path: 'workshops/:id/edit', component: EditWorkshopComponent},
+      {path: 'materials', component: MaterialComponent},
+      {path: 'materials/create', component: AddMaterialComponent},
+      {path: 'materials/:id/edit', component: EditMaterialComponent},
     ])
   ],
   providers: [MaterialService,WorkshopService],
