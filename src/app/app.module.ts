@@ -36,19 +36,8 @@ import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
-<<<<<<< HEAD
-   
-=======
-<<<<<<< HEAD
     HomeComponentComponent,
     EditWorkshopComponent,
-=======
-<<<<<<< HEAD
-   
-=======
->>>>>>> 973407467f9dc965d2ffffa10ad28bd6147cd901
->>>>>>> 02da79abc6dd2c62f2639acea1c2395c8ed71472
->>>>>>> e6e41fb2ca2372215566987a40c3f8346fec7869
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
