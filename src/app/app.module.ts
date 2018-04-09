@@ -19,7 +19,9 @@ import { AsideNavComponent } from './aside-nav/aside-nav.component';
 import { MainComponent } from './main/main.component';
 import { WorkshopComponent } from './workshop/workshop.component';
 import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
-
+import { ProductComponent } from './product/product.component';
+import { ProductService } from './services/product.service';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -33,16 +35,15 @@ import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
-<<<<<<< HEAD
+    ProductComponent,
+    AddProductComponent,
    
-=======
->>>>>>> 973407467f9dc965d2ffffa10ad28bd6147cd901
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
     AngularFireAuthModule,AngularFireStorageModule,FormsModule
   ],
-  providers: [MaterialService,WorkshopService],
+  providers: [MaterialService,WorkshopService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

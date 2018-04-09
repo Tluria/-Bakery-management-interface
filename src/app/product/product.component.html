@@ -1,0 +1,69 @@
+
+<table *ngIf="products?.length > 0">
+    <thead>
+      <tr>
+          <th>עדכון</th>
+          <th>מרכיבים</th>
+          <th>כשרות</th>
+          <th>סוג</th>
+          <th>כמות</th>
+        <th>מחיר</th>
+        <th>שם</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let product of products">
+          <td><a href="#" class="secondary-content">
+              <i (click)="editProduct($event,product)" class="fa fa-pencil"></i>
+              <i *ngIf="editState && productToEdit.id == product.id" (click)="clearState()" 
+              class="fa fa-compress"></i>
+            </a>
+            <div *ngIf="editState && productToEdit.id == product.id">
+              <form (ngSubmit)="updateProduct(product)">
+                <div class="row">
+                    <div class="product-field col s12">
+                        <input type="text" [(ngModel)]="product.name"
+                        name= "name">
+                      </div>
+                      <div class="product-field col s12">
+                          <input type="number" [(ngModel)]="product.price"
+                          name= "price">
+                        </div>
+                        <div class="product-fieldinput-field col s12">
+                            <input type="number" [(ngModel)]="product.quantity"
+                            name= "quantity">
+                          </div>
+                          <div class="product-field col s12">
+                              <input type="text" [(ngModel)]="product.type"
+                              name= "type">
+                            </div>
+                            <div class="product-field col s12">
+                                <input type="text" [(ngModel)]="product.kosher"
+                                name= "kosher">
+                              </div>
+                              <div class="product-field col s12"> 
+                                  <input type="text" [(ngModel)]="product.material"
+                                  name= "material">
+                                </div>
+                            <input type="submit" value="עדכן" class="btn orange">
+                            <button (click)="deleteProduct($event,product)" class="btn red">
+                              מחק
+                            </button>
+                </div>
+              </form>
+            </div>
+           </td>
+          <td>{{ product.material }}</td>
+          <td>{{ product.kosher }}</td>
+          <td>{{ product.type }}</td>
+          <td>{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="products?.length == 0">
+    There is no products.
+  </div>
