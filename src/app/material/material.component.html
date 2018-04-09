@@ -1,5 +1,24 @@
 <h2>מלאי קיים</h2>
-<table *ngIf="materials?.length > 0">
+<div class="table-responsive" *ngIf="materials">
+  <div class="row byfilter">
+    <button class="btn btn-primary"
+        [class.active]="filterBy==='critical'"
+        (click)="filterBy('critical')">
+       קריטי
+    </button>
+    <button class="btn btn-primary"
+        [class.active]="filterBy==='quantity'"
+        (click)="filterBy('quantity')">
+         2 כמות גדולה מ 
+    </button>
+    <button class="btn prime"
+        [class.active]="filterBy==='all'"
+        (click)="filterBy('all')">
+         כל חומרי הגלם
+    </button>
+  </div>
+</div> 
+<table class="tableDesign" *ngIf="materials?.length > 0">
   <thead>
     <tr>
       <th>עדכון</th>
@@ -13,7 +32,7 @@
 
   <tbody>
     <tr *ngFor="let material of materials">
-      <td><a href="#" class="secondary-content">
+      <td><a routerLink="/materials" class="secondary-content">
         <i (click)="editMaterial($event, material)" class="fa fa-pencil"></i>
         <i  *ngIf="editState && materialToEdit.id == material.id" (click)="clearState()" class="fa fa-compress"></i>
       </a>
@@ -44,7 +63,7 @@
     </tr>
   </tbody>
 </table>
-
 <div *ngIf="materials?.length == 0">
   There is no materials.
 </div>
+

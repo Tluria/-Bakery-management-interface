@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {MatTableModule} from '@angular/material';
+import { MatTableModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { MaterialComponent } from './material/material.component';
 import { MaterialService } from './services/material.service';
@@ -23,6 +23,10 @@ import { RouterModule } from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule} from '@angular/material';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -37,29 +41,18 @@ import { EditMaterialComponent } from './edit-material/edit-material.component';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
-<<<<<<< HEAD
     HomeComponentComponent,
     EditWorkshopComponent,
     EditMaterialComponent,
-=======
-<<<<<<< HEAD
-   
-=======
-<<<<<<< HEAD
     HomeComponentComponent,
     EditWorkshopComponent,
-=======
-<<<<<<< HEAD
-   
-=======
->>>>>>> 973407467f9dc965d2ffffa10ad28bd6147cd901
->>>>>>> 02da79abc6dd2c62f2639acea1c2395c8ed71472
->>>>>>> e6e41fb2ca2372215566987a40c3f8346fec7869
->>>>>>> 643679cb2a61cc3b8737de1dfcc6572fdfc88d77
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
     AngularFireAuthModule,AngularFireStorageModule,FormsModule,
+    MatFormFieldModule,MatInputModule,MatSelectModule,MatSortModule,MatButtonModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: HomeComponentComponent},
       {path: 'workshops', component: WorkshopComponent},
