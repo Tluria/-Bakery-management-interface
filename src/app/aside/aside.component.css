@@ -1,8 +1,11 @@
 .aside {
-    background: #2f3542;
+    background: #2d3436;
     width: 15%;
     float: left;
-    height: 700px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    right: 0;
 }
 
 .logo {
