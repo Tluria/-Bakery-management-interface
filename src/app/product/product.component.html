@@ -1,5 +1,5 @@
-
-<table *ngIf="products?.length > 0">
+<h2>מוצרים קיימים</h2>
+<table class="tableDesign" *ngIf="products?.length > 0">
     <thead>
       <tr>
           <th>עדכון</th>
@@ -14,7 +14,7 @@
   
     <tbody>
       <tr *ngFor="let product of products">
-          <td><a href="#" class="secondary-content">
+          <td><a routerLink="/products" class="secondary-content">
               <i (click)="editProduct($event,product)" class="fa fa-pencil"></i>
               <i *ngIf="editState && productToEdit.id == product.id" (click)="clearState()" 
               class="fa fa-compress"></i>

@@ -7,6 +7,22 @@ body {
     background: #f5f6fa;
 }
 
+.right {
+    text-align: right;
+}
+
+form {
+    text-align: right;
+}
+
+.row .col {
+    float: right;
+}
+
+h2 {
+    text-align: right;
+}
+
 .filterBy {
     margin-bottom: 10px;
     margin-left: 5px;

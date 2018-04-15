@@ -19,11 +19,9 @@ import { AsideNavComponent } from './aside-nav/aside-nav.component';
 import { MainComponent } from './main/main.component';
 import { WorkshopComponent } from './workshop/workshop.component';
 import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
-<<<<<<< HEAD
 import { ProductComponent } from './product/product.component';
 import { ProductService } from './services/product.service';
 import { AddProductComponent } from './add-product/add-product.component';
-=======
 import { RouterModule } from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
@@ -32,8 +30,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule} from '@angular/material';
 import { MatSortModule } from '@angular/material/sort';
+import { EditproductComponent } from './editproduct/editproduct.component';
 
->>>>>>> 77d9824367eac226551948499b232f04eaca0865
 
 @NgModule({
   declarations: [
@@ -47,17 +45,14 @@ import { MatSortModule } from '@angular/material/sort';
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
-<<<<<<< HEAD
     ProductComponent,
     AddProductComponent,
-   
-=======
     HomeComponentComponent,
     EditWorkshopComponent,
     EditMaterialComponent,
     HomeComponentComponent,
     EditWorkshopComponent,
->>>>>>> 77d9824367eac226551948499b232f04eaca0865
+    EditproductComponent,
   ],
   imports: [
     BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
@@ -73,6 +68,9 @@ import { MatSortModule } from '@angular/material/sort';
       {path: 'materials', component: MaterialComponent},
       {path: 'materials/create', component: AddMaterialComponent},
       {path: 'materials/:id/edit', component: EditMaterialComponent},
+      {path: 'products', component: ProductComponent},
+      {path: 'products/create', component: AddProductComponent},
+      {path: 'products/:id/edit', component: EditproductComponent},
     ])
   ],
   providers: [MaterialService,WorkshopService,ProductService],
