@@ -34,8 +34,6 @@ import { EditproductComponent } from './editproduct/editproduct.component';
 import appRoutes from './app.routes';
 import { LoadChildren } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { single, multi } from '../data.ts';
-
 
 @NgModule({
   declarations: [
