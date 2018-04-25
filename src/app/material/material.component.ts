@@ -17,8 +17,8 @@ export class MaterialComponent implements OnInit {
   editState:boolean = false;
   materialToEdit: Material;
   masg: string = '';
-  dataSource;
-
+  currentFilter = 'all';
+ 
   constructor(private materialService: MaterialService, public toastr: ToastsManager, vcr: ViewContainerRef) { 
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -29,6 +29,19 @@ export class MaterialComponent implements OnInit {
       this.copyMaterials= this.materials;
       this.showInfo();
     });
+  }
+
+  onSearch(event) {
+    const searchMaterials = this.materials.filter(material => {
+      return material.name.includes(event.target.value);
+    });
+
+    if (event.target.value.length > 0) {
+      this.materials = searchMaterials;
+      return;
+    }
+
+    this.materials = this.copyMaterials;
   }
 
   deleteMaterial(event, material:Material){
@@ -66,12 +79,12 @@ export class MaterialComponent implements OnInit {
   }
 
   showInfo() {
-    this.toastr.info(this.userAlert(), '');
+    this.toastr.info(this.userAlert(), null);
   }
 
   userAlert():string {
     var flag = true;
-    this.masg = ' מלאי שעומד להיגמר : ';
+    this.masg = ' מלאי קריטי שעומד להיגמר : ';
     for (let m of this.materials){
       if(m.critical=='כן' && m.quantity<=2){
         this.masg += m.name + ', ';
@@ -88,20 +101,21 @@ export class MaterialComponent implements OnInit {
   filterBy(filter: string){
     switch(filter){
       case 'all':
-        this.materials= this.copyMaterials;
-        console.log('all materials clicked')
+        this.materials = this.copyMaterials;
+        this.currentFilter = 'all';
         break;
-    
       case 'critical':
-        this.materials= this.materials.filter(material => {
-        return material.critical.toLowerCase().includes('כן');
-      });
+        this.materials = this.materials.filter(material => {
+          return material.critical.toLowerCase().includes('כן');
+        });
+        this.currentFilter = 'critical';
         break;
       case 'quantity':
-      this.materials= this.materials.filter(material => {
-        return (material.quantity) > 2;
-      });
-      break;
+        this.materials = this.materials.filter(material => {
+          return (material.quantity) > 2;
+        });
+        this.currentFilter = 'quantity';
+        break;
     }
   }
 }

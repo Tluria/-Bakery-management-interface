@@ -31,6 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule} from '@angular/material';
 import { MatSortModule } from '@angular/material/sort';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import appRoutes from './app.routes';
+import { LoadChildren } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { single, multi } from '../data.ts';
 
 
 @NgModule({
@@ -55,25 +59,14 @@ import { EditproductComponent } from './editproduct/editproduct.component';
     EditproductComponent,
   ],
   imports: [
-    BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
-    AngularFireAuthModule,AngularFireStorageModule,FormsModule,
-    MatFormFieldModule,MatInputModule,MatSelectModule,MatSortModule,MatButtonModule,
+    BrowserModule,AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule,
+    AngularFireAuthModule, AngularFireStorageModule, FormsModule,
+    MatFormFieldModule, MatInputModule, MatSelectModule, MatSortModule, MatButtonModule,
     BrowserAnimationsModule,
     ToastModule.forRoot(),
-    RouterModule.forRoot([
-      {path: '', component: HomeComponentComponent},
-      {path: 'workshops', component: WorkshopComponent},
-      {path: 'workshops/create', component: AddWorkshopComponent},
-      {path: 'workshops/:id/edit', component: EditWorkshopComponent},
-      {path: 'materials', component: MaterialComponent},
-      {path: 'materials/create', component: AddMaterialComponent},
-      {path: 'materials/:id/edit', component: EditMaterialComponent},
-      {path: 'products', component: ProductComponent},
-      {path: 'products/create', component: AddProductComponent},
-      {path: 'products/:id/edit', component: EditproductComponent},
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [MaterialService,WorkshopService,ProductService],
+  providers: [MaterialService, WorkshopService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

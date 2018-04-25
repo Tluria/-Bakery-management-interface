@@ -1,23 +1,39 @@
+<h6> <a href="#">דף בית </a> > 
+     <a href="#">ניהול מלאי </a> > 
+     <a href="http://localhost:4200/materials"><b>מלאי קיים</b></a>
+</h6>
+
 <h2>מלאי קיים</h2>
-<div class="table-responsive" *ngIf="materials">
-  <div class="row byfilter">
-    <button class="btn btn-primary"
-        [class.active]="filterBy==='critical'"
+
+<input 
+  type="search" 
+  class="form-control"
+  (keyup)="onSearch($event)" 
+  placeholder="...חפש חומר גלם לפי שם" 
+  name="search">
+
+<div class="row" *ngIf="materials">
+  <div class="col s12 byfilter">
+    <button class="btn"
+        [class.prime]="currentFilter === 'critical'"
         (click)="filterBy('critical')">
        קריטי
     </button>
-    <button class="btn btn-primary"
-        [class.active]="filterBy==='quantity'"
+
+    <button class="btn"
+        [class.prime]="currentFilter === 'quantity'"
         (click)="filterBy('quantity')">
          2 כמות גדולה מ 
     </button>
-    <button class="btn prime"
-        [class.active]="filterBy==='all'"
+
+    <button class="btn"
+        [class.prime]="currentFilter === 'all'"
         (click)="filterBy('all')">
          כל חומרי הגלם
     </button>
   </div>
 </div> 
+
 <table class="tableDesign" *ngIf="materials?.length > 0">
   <thead>
     <tr>
@@ -27,9 +43,7 @@
       <th>שם</th>
     </tr>
   </thead>
-  <tbody>
      
-
   <tbody>
     <tr *ngFor="let material of materials">
       <td><a routerLink="/materials" class="secondary-content">
@@ -38,23 +52,28 @@
       </a>
       <div *ngIf="editState && materialToEdit.id == material.id">
         <br>
-         <form (ngSubmit)="updateMaterial(material)">
+         <form (ngSubmit)="updateMaterial(material)" class="col s6">
             <div class="row">
-                <div class-field col s4>
-                    <input type="text" [(ngModel)]="material.name"
-                    name="name">
-                </div>
-                <div class-field col s4>
-                    <input type="number" [(ngModel)]="material.quantity"
-                    name="quantity">
-                </div>
-                <div class-field col s4>
-                    <input type="text" [(ngModel)]="material.critical"
-                    name="critical">
-                </div>
-                <input type="submit" value="עדכון" class="btn orange">
-                <button (click)="deleteMaterial($event, material)" class="btn red">מחיקה</button>
+              <div class="col s6">
+                  <label for="workname">כמות</label>
+                  <input type="number" [(ngModel)]="material.quantity"
+                  name="quantity">
               </div>
+
+              <div class="col s6">
+                  <label for="workname">שם</label>
+                  <input type="text" [(ngModel)]="material.name"
+                  name="name">
+              </div>
+
+              <div class="col s6 right">
+                  <label for="workname">קריטי</label>
+                  <input type="text" [(ngModel)]="material.critical"
+                  name="critical">
+              </div>
+            </div>
+            <input type="submit" value="עדכון" class="btn orange">
+            <button (click)="deleteMaterial($event, material)" class="btn red">מחיקה</button>
          </form>
       </div></td>
       <td>{{ material.critical }}</td>
@@ -63,7 +82,7 @@
     </tr>
   </tbody>
 </table>
-<div *ngIf="materials?.length == 0">
-  There is no materials.
-</div>
 
+<div *ngIf="materials?.length == 0">
+  אין חומרי גלם
+</div>

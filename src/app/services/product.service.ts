@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'; 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx'
 import { Product } from '../models/Product';
 import { contains } from '@firebase/util';
-
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ProductService {
@@ -32,8 +32,6 @@ export class ProductService {
    addProduct(product: Product){
      this.productsCollection.add(product);
    }
-
-   
 
    deleteProduct(product: Product){
      this.productDoc = this.afs.doc(`product/${product.id}`);

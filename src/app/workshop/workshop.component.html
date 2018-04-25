@@ -1,4 +1,26 @@
+<h6> <a href="#">דף בית </a> > 
+     <a href="#">ניהול סדנאות </a> > 
+     <a href="http://localhost:4200/workshops"><b>סדנאות קיימות</b></a>
+</h6>
+
 <h2>סדנאות קיימות</h2>
+
+<input 
+  type="search" 
+  class="form-control"
+  (keyup)="onSearch($event)" 
+  placeholder="...חפש סדנא לפי שם" 
+  name="search">
+
+<div class="row" *ngIf="'workshops'">
+    <div class="col s12 byfilter">
+      <button class="btn"
+          [class.prime]="currentFilter === 'all'"
+          (click)="filterBy('all')">
+          כל הסדנאות
+      </button>
+    </div>
+</div> 
 <table class="tableDesign" *ngIf="workshops?.length > 0">
   <thead>
     <tr>
@@ -14,9 +36,42 @@
   <tbody>
     <tr *ngFor="let workshop of workshops">
       <td>
-        <a [routerLink]="[workshop.id, 'edit']" class="secondary-content">
-          <i class="fa fa-pencil"></i>
+        <a routerLink="/workshops" class="secondary-content">
+          <i (click)="editWorkshop($event,workshop)" class="fa fa-pencil"></i>
+          <i  *ngIf="editState && workshopToEdit.id == workshop.id" (click)="clearState()" class="fa fa-compress"></i>
         </a>
+        <div *ngIf="editState && workshopToEdit.id == workshop.id">
+          <form (ngSubmit)="updateWorkshop(workshop)">
+            <div class="row">
+              <div class="col s6">
+                <label for="participants">כמות משתתפים</label> 
+                <input type="number" name="participants" [(ngModel)]="workshop.participants">
+              </div>
+
+              <div class="col s6">
+                <label for="workname">שם הסדנא</label>
+                <input type="text" name="workname" [(ngModel)]="workshop.name">
+              </div>
+     
+              <div class="col s6">
+                <label for="date">תאריך</label>
+                <input type="text" name="date" [(ngModel)]="workshop.date">
+                </div>
+
+              <div class="col s6">
+                <label for="duration">זמן סדנא</label> 
+                <input type="text" name="duration" [(ngModel)]="workshop.duration">
+                </div>
+
+              <div class="col s6 right">
+                <label for="price">מחיר לאדם</label> 
+                <input type="number" name="price" [(ngModel)]="workshop.price">
+              </div>
+            </div>
+               <input type="submit" value="עדכון סדנא" class="btn orange">
+               <button (click)="deleteWorkshop($event, workshop)" class="btn red">מחיקת סדנא</button>
+          </form>
+        </div>
       </td>
       <td>{{ workshop?.price}}</td>
       <td>{{ workshop?.date }}</td>
@@ -28,5 +83,5 @@
 </table>
 
 <div *ngIf="workshops?.length == 0">
-  There is no workshops.
+  אין סדנאות
 </div>
