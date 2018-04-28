@@ -1,36 +1,65 @@
-<h6> <a href="#">דף בית </a> > 
-     <a href="#">ניהול סדנאות </a> > 
-     <a href="http://localhost:4200/workshops/create"><b>הוספת סדנא</b></a>
-</h6>
+<div class="container-fluid">
+  <h6> <a href="#">דף בית </a> > 
+      <a href="#">ניהול סדנאות </a> > 
+      <a href="http://localhost:4200/workshops/create"><b>הוספת סדנא</b></a>
+  </h6>
 
-<h2>הוספת סדנא</h2>
+  <div class="row center_div">
+    <div class="col-md-auto">
+      <h2>הוספת סדנא</h2>
+      <form (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-group col-md-6">
+          <label for="price">:מחיר לאדם</label>
+          <input 
+            type="number" 
+            class="form-control" 
+            name="price"
+            [(ngModel)]="workshop.price">
+        </div>
 
-<div class="card workshop">
-  <div class="card-content">
-    <form (ngSubmit)="onSubmit()" class="col s6">
-      <div class="row">
-        <div class="col s6">
-          <label for="workname">שם הסדנא</label>
-          <input type="text" name="workname" [(ngModel)]="workshop.name">
+        <div class="form-group col-md-6">
+          <label for="workname">:שם הסדנא</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="workname"
+            [(ngModel)]="workshop.name">
         </div>
-        <div class="col s6">
-            <label for="date">תאריך</label>
-          <input type="text" name="date" [(ngModel)]="workshop.date">
+
+        <div class="form-group col-md-6">
+          <label for="date">:תאריך</label>
+          <input  
+            type="text"
+            class="form-control" 
+            name="date"
+            [(ngModel)]="workshop.date">
         </div>
-        <div class="col s6">
-          <label for="duration">זמן סדנא</label>
-          <input type="text" name="duration" [(ngModel)]="workshop.duration">
+
+        <div class="form-group col-md-6">
+          <label for="duration">:זמן סדנא</label>
+          <input  
+            type="text"
+            class="form-control" 
+            name="duration"
+            [(ngModel)]="workshop.duration">
         </div>
-        <div class="col s6">
-          <label for="participants">כמות משתתפים</label>
-          <input type="number" name="participants" [(ngModel)]="workshop.participants">
+
+        <div class="form-group col-md-6 pull-right">
+          <label for="participants">:כמות משתתפים</label>
+          <input  
+            type="number"
+            class="form-control" 
+            name="participants"
+            [(ngModel)]="workshop.participants">
         </div>
-        <div class="col s6 right">
-          <label for="price">מחיר לאדם</label>
-          <input type="number" name="price" [(ngModel)]="workshop.price">
-        </div>
-      </div>
-      <p><input type="submit" value="הוספה" class="btn"></p>
-    </form>
+          <input type="submit" value="הוספה" class="clear btn btn-primary btn-form">
+      </form>
+    </div>
   </div>
 </div>
+
+
+
+    
+        
+  

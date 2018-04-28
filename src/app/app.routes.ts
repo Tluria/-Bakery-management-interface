@@ -8,6 +8,8 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
 
 export default [    
     {path: '', component: HomeComponentComponent},
@@ -20,6 +22,6 @@ export default [
     {path: 'products', component: ProductComponent},
     {path: 'products/create', component: AddProductComponent},
     {path: 'products/:id/edit', component: EditproductComponent},
+    {path: 'calendar', component: CalendarComponent},
 ];
-
 

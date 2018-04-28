@@ -10,8 +10,10 @@ import { Product } from '../models/product';
 export class HomeComponentComponent implements OnInit {
 
   products: Product[];
-  
+  productData = [];
+
   //Chart
+  chartData: boolean = false;
   view: any[] = [700, 400];
   showLegend = true;
 
@@ -25,13 +27,22 @@ export class HomeComponentComponent implements OnInit {
   constructor(private productService:ProductService) { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((result) => {
+    this.productService.getAllEntries().subscribe((result) => {
+      this.products = result;
+      this.chartData = true;
       this.processData(result);
     })
   }
 
   processData(entries) {
-
+    this.productData =[];
+    for(let key of this.products) {
+      let singleentry = {
+        name: key.name,
+        value: key.quantity
+      }
+      this.productData.push(singleentry)
+    }
   }
 
 }

@@ -1,31 +1,49 @@
-<h6> <a href="#">דף בית </a> > 
-     <a href="#">ניהול מלאי </a> > 
-     <a href="http://localhost:4200/materials/create"><b>הוספת מלאי</b></a>
-</h6>
+<div class="container-fluid">
+  <h6> <a href="#">דף בית </a> > 
+      <a href="#">ניהול מלאי </a> > 
+      <a href="http://localhost:4200/materials/create"><b>הוספת מלאי</b></a>
+  </h6>
 
-<h2>הוספת מלאי</h2>
+  <div class="row center_div">
+    <div class="col-md-auto">
+      <h2>הוספת מלאי</h2>
+      <form (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-group col-md-6">
+          <label for="quantity">:כמות</label>
+          <input  
+            type="number"
+            class="form-control" 
+            name="quantity"
+            [(ngModel)]="material.quantity">
+        </div>
 
-<div class="card">
-  <div class="card-content">
-    <form (ngSubmit)="onSubmit()" class="col s6">
-      <div class="row">
-        <div class="col s6">
-            <label>שם</label>
-            <input type="text" [(ngModel)]="material.name"
-            name="name">
+        <div class="form-group col-md-6">
+          <label for="name">:שם</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="name"
+            [(ngModel)]="material.name">
         </div>
-        <div class="col s6">
-            <label>כמות</label>
-            <input type="number" [(ngModel)]="material.quantity"
-            name="quantity">
+
+        <div class="form-group col-md-6 pull-right">
+          <label for="critical">קריטי: כן/לא</label>
+          <input  
+            type="text"
+            class="form-control" 
+            name="critical"
+            [(ngModel)]="material.critical">
         </div>
-        <div class="col s6 right">
-            <label>קריטי</label>
-            <input type="text" [(ngModel)]="material.critical"
-            name="critical">
-        </div>
-      </div>
-      <input type="submit" value="הוספה" class="btn">
-    </form>
+        <input type="submit" value="הוספה" class="clear btn btn-primary btn-form">
+      </form>
+    </div>
   </div>
 </div>
+
+
+  <!-- <form class="form-horizontal" (ngSubmit)="onSubmit()">
+   
+   
+    
+  </form>
+</div> -->

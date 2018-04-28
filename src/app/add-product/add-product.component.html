@@ -1,46 +1,68 @@
-<h6> <a href="#">דף בית </a> > 
-     <a href="#">ניהול מוצרים </a> > 
-     <a href="http://localhost:4200/products/create"><b>הוספת מוצר</b></a>
-</h6>
+<div class="container-fluid">
+  <h6> <a href="#">דף בית </a> > 
+      <a href="#">ניהול מוצרים </a> > 
+      <a href="http://localhost:4200/products/create"><b>הוספת מוצר</b></a>
+  </h6>
 
-<h2>הוספת מוצר</h2>
-
-<div class="card">
-  <div class="card-content">
-    <form (ngSubmit)="onSubmit()" class="col s6">
-      <div class="row">
-        <div class="col s6">
-          <label>שם</label>
-          <input type="text" [(ngModel)]="product.name"
-          name= "name">
+  <div class="row center_div">
+    <div class="col-md-auto">
+      <h2>הוספת מוצר</h2>
+      <form (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-group col-md-6">
+          <label for="price">:מחיר</label>
+          <input 
+            type="number" 
+            class="form-control" 
+            name="price"
+            [(ngModel)]="product.price">
         </div>
-        <div class="col s6">
-            <label>מחיר</label>
-            <input type="number" [(ngModel)]="product.price"
-            name= "price">
+
+        <div class="form-group col-md-6">
+          <label for="name">:שם</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="name"
+            [(ngModel)]="product.name">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="quantity">:כמות</label>
+          <input  
+            type="number"
+            class="form-control" 
+            name="quantity"
+            [(ngModel)]="product.quantity">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="type">:סוג</label>
+          <input  
+            type="text"
+            class="form-control" 
+            name="type"
+            [(ngModel)]="product.type">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="kosher">:כשרות</label>
+          <input  
+            type="text"
+            class="form-control" 
+            name="kosher"
+            [(ngModel)]="product.kosher">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="material">:מרכיבים</label>
+          <input  
+            type="text"
+            class="form-control" 
+            name="material"
+            [(ngModel)]="product.material">
           </div>
-          <div class="col s6">
-              <label>כמות</label>
-              <input type="number" [(ngModel)]="product.quantity"
-              name= "quantity">
-            </div>
-            <div class="col s6">
-                <label>סוג</label>
-                <input type="text" [(ngModel)]="product.type"
-                name= "type">
-              </div>
-              <div class="col s6">
-                  <label>כשרות</label>
-                  <input type="text" [(ngModel)]="product.kosher"
-                  name= "kosher">
-                </div>
-                <div class="col s6">
-                    <label>מרכיבים</label>
-                    <input type="text" [(ngModel)]="product.material"
-                    name= "material">
-                  </div>
-          <input type="submit" value="הוספה" class="btn">
-      </div>
-    </form>
+        <input type="submit" value="הוספה" class="btn btn-primary btn-form">
+      </form>
+    </div>
   </div>
 </div>

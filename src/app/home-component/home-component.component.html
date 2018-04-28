@@ -1,9 +1,33 @@
-<!-- <ngx-charts-pie-chart
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="single"
-  [legend]="showLegend"
-  [explodeSlices]="explodeSlices"
-  [labels]="showLabels"
-  [doughnut]="doughnut">
-</ngx-charts-pie-chart> -->
+<div class="container-fluid"> 
+  <h6> <a href="#">דף בית </a></h6>
+
+  <div class="row">
+    <p *ngIf="chartData">מוצרים נמכרים</p>
+    <div class="col-xs-12 center">
+      <ngx-charts-pie-chart *ngIf="chartData"
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="productData"
+        [legend]="showLegend"
+        [explodeSlices]="explodeSlices"
+        [labels]="showLabels"
+        [doughnut]="doughnut">
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
+  <!-- <hr> -->
+  <!-- <div class="row">
+    <p *ngIf="chartData">סדנאות נמכרות</p>
+    <div class="col-xs-12 center">
+      <ngx-charts-pie-chart *ngIf="chartData"
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="productData"
+        [legend]="showLegend"
+        [explodeSlices]="explodeSlices"
+        [labels]="showLabels"
+        [doughnut]="doughnut">
+      </ngx-charts-pie-chart>
+    </div>
+  </div> -->
+</div> 
