@@ -8,3 +8,78 @@ body {
     background: #f5f6fa;
 }
 
+<<<<<<< HEAD
+=======
+.btn.prime {
+    background-color: #34495e;
+}
+
+.btn.prime:hover {
+    background-color: #34495e;
+}
+
+.btn.btn-filter {
+    background-color: #b2bec3;
+}
+
+.btn.btn-filter:hover {
+    background-color: #bcc9ce;
+}
+
+.right {
+    text-align: right;
+}
+
+form {
+    text-align: right;
+}
+
+.row .col {
+    float: right;
+}
+
+h2 {
+    text-align: right;
+}
+
+h6 a{
+    color: rgb(163, 161, 161);
+}
+
+.filterBy {
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.tableDesign {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableDesign td, .tableDesign th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tableDesign tr:nth-child(even){background-color: #f2f2f2;}
+
+.tableDesign tr:hover {background-color: #ddd;}
+
+.tableDesign th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: right;
+    background-color: #34495e;
+    color: white;
+}
+
+button.btn.search-btn i {
+    font-size: 1.1rem;
+}
+
+button.btn.search-btn {
+    height: 38px;
+    margin-bottom: 21px;
+}
+>>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c

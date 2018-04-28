@@ -10,43 +10,60 @@ import {DataSource} from '@angular/cdk/collections';
 })
 export class WorkshopComponent implements OnInit {
   workshops:Workshop[];
-   public num=null;
-   editState: boolean = false;
-   workshopToEdit: Workshop;
-  
-    constructor(private workshopService: WorkshopService) { }
-  
-    ngOnInit() {
-      this.workshopService.getWorkshop().subscribe(workshops => {
-        this.workshops = workshops;
-      })
+  copyWorkshops:Workshop[]=[];
+  public num=null;
+  editState: boolean = false;
+  workshopToEdit: Workshop;
+  currentFilter = 'all';
+
+  constructor(private workshopService: WorkshopService) { }
+
+  ngOnInit() {
+    this.workshopService.getWorkshop().subscribe(workshops => {
+      this.workshops = workshops;
+      this.copyWorkshops= this.workshops;
+    })
+  }
+
+  onSearch(event) {
+    const searchWrokshops = this.workshops.filter(workshop => {
+      return workshop.name.includes(event.target.value);
+    });
+
+    if (event.target.value.length > 0) {
+      this.workshops = searchWrokshops;
+      return;
     }
 
-    horada(){
-      for(var i=0;i<this.workshops.length;i++){
-        
-        this.workshops[i].price-=this.num;
-      }
-    }
+    this.workshops = this.copyWorkshops;
+  }
 
-    deleteWorkshop(event, workshop: Workshop){
-      this.clearState();
-      this.workshopService.deleteWorkshop(workshop);
+  filterBy(filter: string){
+    switch(filter){
+      case 'all':
+        this.workshops= this.copyWorkshops;
+        this.currentFilter = 'all';
+        break;
     }
+  }
 
-    editWorkshop(event, workshop: Workshop) {
-      this.editState = true;
-      this.workshopToEdit = workshop;
-    }
+  editWorkshop(event, workshop: Workshop) {
+    this.editState = true;
+    this.workshopToEdit = workshop;
+  }
 
-    updateWorkshop(workshop: Workshop){
-      this.workshopService.updateWorkshop(workshop);
-      this.clearState();
-    }
+  deleteWorkshop(event, workshop: Workshop){
+    this.clearState();
+    this.workshopService.deleteWorkshop(workshop);
+  }
 
-    clearState(){
-      this.editState = false;
-      this.workshopToEdit = null;
-    }
+  updateWorkshop(workshop: Workshop){
+    this.workshopService.updateWorkshop(workshop);
+    this.clearState();
+  }
 
+  clearState(){
+    this.editState = false;
+    this.workshopToEdit = null;
+  }
 }

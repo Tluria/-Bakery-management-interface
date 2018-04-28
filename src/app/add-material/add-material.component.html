@@ -1,25 +1,31 @@
+<h6> <a href="#">דף בית </a> > 
+     <a href="#">ניהול מלאי </a> > 
+     <a href="http://localhost:4200/materials/create"><b>הוספת מלאי</b></a>
+</h6>
+
 <h2>הוספת מלאי</h2>
+
 <div class="card">
   <div class="card-content">
     <form (ngSubmit)="onSubmit()" class="col s6">
       <div class="row">
-        <div class-field col s4>
+        <div class="col s6">
             <label>שם</label>
             <input type="text" [(ngModel)]="material.name"
             name="name">
         </div>
-        <div class-field col s4>
+        <div class="col s6">
             <label>כמות</label>
             <input type="number" [(ngModel)]="material.quantity"
             name="quantity">
         </div>
-        <div class-field col s4>
+        <div class="col s6 right">
             <label>קריטי</label>
             <input type="text" [(ngModel)]="material.critical"
             name="critical">
         </div>
-        <input type="submit" value="הוספה" class="btn">
       </div>
+      <input type="submit" value="הוספה" class="btn">
     </form>
   </div>
 </div>
