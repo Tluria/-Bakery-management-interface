@@ -9,13 +9,56 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .btn.prime {
     background-color: #34495e;
+=======
+.scroll {
+    overflow: scroll;
+    height: 41em;
+>>>>>>> a65cea59eef8d92dd087b60a55d5e375266b146a
 }
 
-.btn.prime:hover {
-    background-color: #34495e;
+.clear {
+    clear: both;
+}
+
+.block {
+    display: block;
+}
+
+.row.center_div {
+    margin: 0 auto;
+    width:60%;
+}
+
+.row.center_div_crud {
+    margin: 0 auto;
+    width:80%;
+}
+
+.btn.btn-primary.btn-form {
+    margin: 0 auto;
+    text-align:center;
+    display: block;
+    width: 40%;
+}
+
+.form-container {
+    box-shadow: 1px 1px 5px 1px gray;
+    border-radius: 6px;
+    background: #fdfdfd;
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.margin {
+    margin-top: 60px;
+}
+
+.btn-margin {
+    margin-bottom: 2px;
 }
 
 .btn.btn-filter {

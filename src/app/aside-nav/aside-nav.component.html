@@ -1,24 +1,32 @@
-<div class="main-nav">
-  <ul class="main-nav-ul">
-    <li><a id="first-item" href="#"><span class="sub-arrow"></span>ניהול מלאי<span class="glyphicon glyphicon-cutlery"></span></a>
-      <ul class="sub-nav">
+<div class="nav-side-menu">
+  <div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li data-toggle="collapse" data-target="#material" class="collapsed first-item">
+        <a><span class="sub-arrow"></span>ניהול מלאי<span class="glyphicon glyphicon-cutlery"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="material">
         <li><a routerLink="/materials">מלאי קיים</a></li>
         <li><a routerLink="/materials/create">הוספת מלאי</a></li>
       </ul>
-    </li>
-    <li><a href="#"><span class="sub-arrow"></span>ניהול מוצרים<span class="glyphicon glyphicon-apple"></span></a>
-      <ul class="sub-nav">
-          <li routerLinkActive="active current"><a routerLink="/products">מוצרים קיימים</a></li>
-          <li routerLinkActive="active current"><a routerLink="/products/create">הוספת מוצר</a></li>
+
+      <li data-toggle="collapse" data-target="#products" class="collapsed">
+        <a><span class="sub-arrow"></span>ניהול מוצרים<span class="glyphicon glyphicon-apple"></span></a> 
+      </li>
+      <ul class="sub-menu collapse" id="products">
+        <li><a routerLink="/products">מוצרים קיימים</a></li>
+        <li><a routerLink="/products/create">הוספת מוצר</a></li>
       </ul>
-    </li>
-    <li><a href="#"><span class="sub-arrow"></span>ניהול סדנאות<span class="glyphicon glyphicon-tasks"></span></a>
-      <ul class="sub-nav">
-          <li routerLinkActive="active current"><a routerLink="/workshops">סדנאות קיימות</a></li>
-          <li routerLinkActive="active current"><a routerLink="/workshops/create">הוספת סדנא</a></li>
+
+      <li data-toggle="collapse" data-target="#workshop" class="collapsed">
+        <a><span class="sub-arrow"></span>ניהול סדנאות<span class="glyphicon glyphicon-tasks"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="workshop">
+        <li><a routerLink="/workshops">סדנאות קיימות</a></li>
+        <li><a routerLink="/workshops/create">הוספת סדנא</a></li>
       </ul>
-    </li>
-    <li><a href="#">הזמנה מספק<span class="glyphicon glyphicon-dashboard"></span></a></li>
-    <li><a href="#">עדכון לוח שנה<span class="glyphicon glyphicon-globe"></span></a></li>
-  </ul>
+
+      <li><a href="#">הזמנה מספק<span class="glyphicon glyphicon-dashboard"></span></a></li>
+      <li><a routerLink="/calendar">עדכון לוח שנה<span class="glyphicon glyphicon-globe"></span></a></li>
+    </ul>
+  </div>
 </div>

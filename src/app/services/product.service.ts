@@ -44,6 +44,11 @@ export class ProductService {
     this.productDoc.update(product);
 
   }
+
+  getAllEntries(): Observable<any> {
+    return this.afs.collection('product').valueChanges();
+  }
+
 }
 
 

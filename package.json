@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "@progress/kendo-angular-dateinputs": "^2.2.0",
     "@progress/kendo-angular-intl": "^1.4.0",
@@ -36,8 +37,13 @@
 =======
     "@swimlane/ngx-charts": "^7.3.0",
 >>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c
+=======
+    "@ng-bootstrap/ng-bootstrap": "^1.1.2",
+    "@swimlane/ngx-charts": "^7.3.0",
+    "angular-calendar": "^0.24.0",
+>>>>>>> a65cea59eef8d92dd087b60a55d5e375266b146a
     "angularfire2": "^5.0.0-rc.6",
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "d3": "^5.0.1",
     "date-fns": "^1.29.0",

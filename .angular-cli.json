@@ -21,6 +21,7 @@
       "styles": [
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.css",
+<<<<<<< HEAD
         "../node_modules/materialize-css/dist/css/materialize.css",
 <<<<<<< HEAD
         "../node_modules/angular-calendar/css/angular-calendar.css"
@@ -28,10 +29,15 @@
         "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
         "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
 >>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c
+=======
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/angular-calendar/css/angular-calendar.css"
+>>>>>>> a65cea59eef8d92dd087b60a55d5e375266b146a
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/materialize-css/dist/js/materialize.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
