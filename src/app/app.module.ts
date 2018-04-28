@@ -44,20 +44,6 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-=======
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule} from '@angular/material';
-import { MatSortModule } from '@angular/material/sort';
-import { EditproductComponent } from './editproduct/editproduct.component';
-import appRoutes from './app.routes';
-import { LoadChildren } from '@angular/router';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
->>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c
-=======
 import { EditproductComponent } from './editproduct/editproduct.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
@@ -69,7 +55,6 @@ import { WorkshopService } from './services/workshop.service';
 import { ProductService } from './services/product.service';
 import { CalendarService } from './services/calendar.service';
 
->>>>>>> a65cea59eef8d92dd087b60a55d5e375266b146a
 
 @NgModule({
   declarations: [
@@ -85,37 +70,13 @@ import { CalendarService } from './services/calendar.service';
     AddWorkshopComponent,
     HomeComponentComponent,
     EditWorkshopComponent,
-
     ProductComponent,
     AddProductComponent,
-
     HomeComponentComponent,
     EditWorkshopComponent,
     EditMaterialComponent,
     HomeComponentComponent,
     EditWorkshopComponent,
-
-    
-  ],
-  imports: [
-    BrowserModule,AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
-    AngularFireAuthModule,AngularFireStorageModule,FormsModule,BrowserAnimationsModule,
-
-    RouterModule.forRoot([
-      {path: '', component: HomeComponentComponent},
-      {path: 'workshops', component: WorkshopComponent},
-      {path: 'workshops/create', component: AddWorkshopComponent},
-      {path: 'workshops/:id/edit', component: EditWorkshopComponent},
-      {path: 'materials', component: MaterialComponent},
-      {path: 'materials/create', component: AddMaterialComponent},
-      {path: 'materials/:id/edit', component: EditMaterialComponent},
-    
-    ]),
-  
-  ],
-  providers: [MaterialService,WorkshopService],
-  bootstrap: [AppComponent],
-
     EditproductComponent,
     CalendarComponent,
     CalendarHeaderComponent,
@@ -145,7 +106,6 @@ import { CalendarService } from './services/calendar.service';
   ],
   providers: [MaterialService, WorkshopService, ProductService, CalendarService],
   bootstrap: [AppComponent]
->>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c
 })
 
 export class AppModule { }

@@ -8,16 +8,13 @@ body {
     background: #f5f6fa;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 .btn.prime {
     background-color: #34495e;
-=======
+}
+
 .scroll {
     overflow: scroll;
     height: 41em;
->>>>>>> a65cea59eef8d92dd087b60a55d5e375266b146a
 }
 
 .clear {
@@ -125,4 +122,3 @@ button.btn.search-btn {
     height: 38px;
     margin-bottom: 21px;
 }
->>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c

@@ -23,25 +23,15 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "@progress/kendo-angular-dateinputs": "^2.2.0",
     "@progress/kendo-angular-intl": "^1.4.0",
     "@progress/kendo-angular-l10n": "^1.1.0",
     "@progress/kendo-theme-default": "^2.50.0",
     "@types/date-fns": "^2.6.0",
-    "angular-calendar": "^0.23.7",
     "angular-calendar-custom": "^0.22.6",
-    "angular-forms-utils": "^0.4.15",
-=======
-    "@swimlane/ngx-charts": "^7.3.0",
->>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c
-=======
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "@swimlane/ngx-charts": "^7.3.0",
     "angular-calendar": "^0.24.0",
->>>>>>> a65cea59eef8d92dd087b60a55d5e375266b146a
     "angularfire2": "^5.0.0-rc.6",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
@@ -54,12 +44,9 @@
     "jquery": "^3.3.1",
     "kendo-ui-core": "^2018.1.411",
     "materialize-css": "^0.100.2",
-<<<<<<< HEAD
     "ng-fullcalendar": "^1.5.5",
     "react-calendar-component": "^2.0.0",
-=======
     "ng2-toastr": "^4.1.2",
->>>>>>> bc5f8688ab9f713c191fb094813abb759adf2c8c
     "rxjs": "^5.5.6",
     "util": "^0.10.3",
     "zone.js": "^0.8.19"
