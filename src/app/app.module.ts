@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import appRoutes from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { environment } from '../environments/environment';
-import appRoutes from './app.routes';
+import { environment } from '../environments/environment.prod';
+
 
 // Modules
-import { AngularFireModule } from 'angularfire2'; 
+import { AngularFireModule } from 'angularfire2';  
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -51,7 +52,7 @@ import { DateTimePickerComponent } from './calendar/mwl-calendar-month-view/mwl-
 
 // Services
 import { MaterialService } from './services/material.service';
-import { WorkshopService } from './services/workshop.service';
+import { WorkshopService } from './services/workshop.service';  
 import { ProductService } from './services/product.service';
 import { CalendarService } from './services/calendar.service';
 
@@ -81,8 +82,8 @@ import { CalendarService } from './services/calendar.service';
     DateTimePickerComponent
   ],
   imports: [
-    BrowserModule, 
     RouterModule.forRoot(appRoutes),
+    BrowserModule, 
     FormsModule,
     BrowserAnimationsModule, 
     CommonModule,
@@ -91,7 +92,7 @@ import { CalendarService } from './services/calendar.service';
     AngularFireAuthModule, AngularFireStorageModule,
     MatFormFieldModule, 
     MatInputModule, 
-    MatSelectModule, 
+    MatSelectModule,
     MatSortModule, 
     MatButtonModule,
     ToastModule.forRoot(),

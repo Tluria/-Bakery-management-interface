@@ -1,33 +1,67 @@
 <div class="container-fluid"> 
-  <h6> <a href="#">דף בית </a></h6>
+  <h2 id="margin_right">בית</h2>
 
-  <div class="row">
-    <p *ngIf="chartData">מוצרים נמכרים</p>
-    <div class="col-xs-12 center">
+  <div class="graph">
+    <div class="header">
+      מוצרים נמכרים- כמות
+    </div>
+    <div class="main">
       <ngx-charts-pie-chart *ngIf="chartData"
         [view]="view"
         [scheme]="colorScheme"
         [results]="productData"
-        [legend]="showLegend"
         [explodeSlices]="explodeSlices"
         [labels]="showLabels"
         [doughnut]="doughnut">
-      </ngx-charts-pie-chart>
+    </ngx-charts-pie-chart>
     </div>
   </div>
-  <!-- <hr> -->
-  <!-- <div class="row">
-    <p *ngIf="chartData">סדנאות נמכרות</p>
-    <div class="col-xs-12 center">
+
+  <div class="graph">
+    <div class="header">
+      סדנאות נמכרות- כמות משתתפים
+    </div>
+    <div class="main">
       <ngx-charts-pie-chart *ngIf="chartData"
         [view]="view"
         [scheme]="colorScheme"
-        [results]="productData"
-        [legend]="showLegend"
+        [results]="workshopData"
         [explodeSlices]="explodeSlices"
         [labels]="showLabels"
         [doughnut]="doughnut">
-      </ngx-charts-pie-chart>
+     </ngx-charts-pie-chart>
     </div>
-  </div> -->
+  </div>
+
+  <div class="graph clear">
+      <div class="header">
+        סדנאות נמכרות- כמות משתתפים
+      </div>
+      <div class="main">
+        <ngx-charts-pie-chart *ngIf="chartData"
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="workshopData"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut">
+       </ngx-charts-pie-chart>
+      </div>
+    </div>
+
+    <div class="graph">
+        <div class="header">
+          סדנאות נמכרות- כמות משתתפים
+        </div>
+        <div class="main">
+          <ngx-charts-pie-chart *ngIf="chartData"
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="workshopData"
+            [explodeSlices]="explodeSlices"
+            [labels]="showLabels"
+            [doughnut]="doughnut">
+         </ngx-charts-pie-chart>
+        </div>
+      </div>
 </div> 

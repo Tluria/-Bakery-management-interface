@@ -1,5 +1,5 @@
 .nav-side-menu {
-    margin-top: 30px;
+    margin-top: 25px;
     width: 15%;
     overflow: auto;
     background-color: #2e353d;
@@ -23,8 +23,8 @@
 .nav-side-menu li {
     text-align: right;
     list-style: none;
-    padding: 7px 0px 7px 0px;
-    line-height: 35px;
+    padding: 2px 0px 2px 0px;
+    line-height: 42px;
     cursor: pointer;
 }
 

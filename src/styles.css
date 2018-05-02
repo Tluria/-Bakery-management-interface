@@ -26,6 +26,14 @@ body {
     width:60%;
 }
 
+.col-xs-5.graph {
+    position: absolute;
+    width: 45%;
+    right: 16%;
+    border: 2px solid rgb(107, 107, 107);
+    padding: 10px;
+}
+
 .row.center_div_crud {
     margin: 0 auto;
     width:80%;

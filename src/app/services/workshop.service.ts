@@ -38,4 +38,8 @@ export class WorkshopService {
     this.workshopDoc.update(workshop);
   }
 
+  getAllEntries(): Observable<any> {
+    return this.afs.collection('workshop').valueChanges();
+  }
+
 }
