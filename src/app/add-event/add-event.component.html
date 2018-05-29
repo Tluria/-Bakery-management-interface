@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row center_div">
+      <div class="col-md-auto">
+        <h2>הוספת אירוע</h2>
+        <form (ngSubmit)="onSubmit()" class="form-container">
+          <div class="form-group col-md-6">
+            <label for="start">:תאריך התחלה</label>
+            <input  
+              type="date"
+              class="form-control" 
+              name="start"
+              [(ngModel)]="calEvent.start">
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label for="title">:כותרת</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              name="title"
+              [(ngModel)]="calEvent.title">
+          </div>
+  
+          <div class="form-group col-md-6 pull-right">
+            <label for="end">:תאריך סיום</label>
+            <input  
+              type="date"
+              class="form-control" 
+              name="end"
+              [(ngModel)]="calEvent.end">
+          </div>
+          <input type="submit" value="הוספה" class="clear btn btn-primary btn-form">
+        </form>
+      </div>
+    </div>
+  </div>

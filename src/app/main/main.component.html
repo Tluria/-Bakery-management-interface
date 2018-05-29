@@ -1,5 +1,5 @@
 <div class="main">
-    <app-header></app-header>
+    <app-header *ngIf="auth.user | async as user"></app-header>
     <div class="container margin">
         <router-outlet></router-outlet>
     </div>

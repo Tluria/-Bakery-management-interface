@@ -8,13 +8,13 @@ p {
 }
 
 .graph {
-    width: 550px;
-    height: 400px;
+    width: 540px;
+    height: 420px;
     border: 1px solid gray;
     border-radius: 5px;
     float: left;
     margin-right: 3px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .header {
@@ -29,6 +29,46 @@ p {
     height: 93%; 
 }
 
-#margin_right {
-    margin-right: 7px;
+.main-event {
+    padding: 15px;
+    padding-top: 50px;
 }
+
+#margin_right {
+    margin-right: 2.5%;
+}
+
+@media only screen and (max-width: 1024px) {
+    #margin_right {
+        margin-right: 23.5%;
+    }
+
+    .graph {
+        width: 540px;
+        height: 420px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        float: left;
+        margin-left: 156px;
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #margin_right {
+        margin-right: 19.5%;
+    }
+
+    .graph {
+        width: 540px;
+        height: 420px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        float: left;
+        margin-left: 18px;
+        margin-top: 5px;
+    }
+}
+
+
+

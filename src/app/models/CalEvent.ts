@@ -1,4 +1,4 @@
-export interface CalendarEvent {
+export interface CalEvent {
     id?: string;
     start?: Date;
     end?:Date;

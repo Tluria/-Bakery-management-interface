@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'; 
 import { Observable } from 'rxjs/Observable';
 import { Workshop } from '../models/Workshop';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class WorkshopService {
@@ -19,10 +20,6 @@ export class WorkshopService {
       });
     });
    }
-
-   getWorkshop() {
-    return this.workshops;
-  }
 
   addWorkshop(workshop: Workshop) {
     this.workshopsCollection.add(workshop);
@@ -42,4 +39,15 @@ export class WorkshopService {
     return this.afs.collection('workshop').valueChanges();
   }
 
+  getWorkshop() {
+    return this.afs.collection('workshop', ref => ref.orderBy('name', 'asc'))
+    .snapshotChanges()
+    .pipe(map((data: any) => {
+      return data.map(a => {
+       const d = a.payload.doc.data() as Workshop;
+       d.id = a.payload.doc.id;
+       return d;
+      })
+    }));
+  }
 }

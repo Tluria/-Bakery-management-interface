@@ -1,0 +1,45 @@
+<div class="container-fluid rapper">
+  <div class="row">
+      <div class="col-xs-12">
+        <h3>:הזמנה לתאריך {{reservation.date}} </h3> 
+      </div>
+    </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      :המצרכים המוזמנים
+      <hr class="md">
+      {{reservation.description}}
+    </div>
+  </div>
+<br>
+  <div class="row">
+      <div class="col-xs-12">
+        סטאטוס:
+        {{reservation.status}}
+      </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <input 
+        type="button"
+        class="btn btn-danger"
+        value="אין במלאי"
+        (click)="changeStatus3()">
+  
+      <input 
+        type="button"
+        class="btn btn-success"
+        value="שלח הזמנה"
+        (click)="changeStatus2()">
+
+      <input 
+        type="button"
+        class="btn btn-primary"
+        value="טפל בהזמנה"
+        (click)="changeStatus1()">
+    </div>
+  </div>
+ 
+</div>

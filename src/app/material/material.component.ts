@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Data, Router } from '@angular/router';
 import { MaterialService } from '../services/material.service';
 import { Material } from '../models/Material';
 import { DataSource } from '@angular/cdk/collections';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-material',
@@ -12,23 +14,35 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent implements OnInit {
-  materials:Material[];
-  copyMaterials:Material[]=[];
+  materials: Material[];
+  copyMaterials: Material[]=[];
   editState:boolean = false;
   materialToEdit: Material;
   masg: string = '';
   currentFilter = 'all';
+  isLoaded = false;
+  showPencil: boolean = true;
+  isAdmin: boolean;
  
-  constructor(private materialService: MaterialService, public toastr: ToastsManager, vcr: ViewContainerRef) { 
+  constructor(
+    private materialService: MaterialService, 
+    public toastr: ToastsManager, 
+    vcr: ViewContainerRef, 
+    private route: ActivatedRoute,
+    public auth: AuthService
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
-    this.materialService.getMaterials().subscribe(materials => {
-      this.materials = materials;
-      this.copyMaterials= this.materials;
-      this.showInfo();
-    });
+    this.auth.user.subscribe(user => {
+      if(user.roles.admin == 'כן'){
+        this.isAdmin = true;
+      }
+    })
+    this.materials = this.route.snapshot.data['materials'];
+    this.copyMaterials = this.materials;
+    this.showInfo();
   }
 
   onSearch(event) {
@@ -51,8 +65,16 @@ export class MaterialComponent implements OnInit {
   }
 
   editMaterial(event, material:Material){
-    this.editState = true;
-    this.materialToEdit = material;
+    this.showPencil = false;
+    this.auth.user.subscribe(user => {
+      if(user.roles.admin == 'כן'){
+        this.editState = true;
+        this.materialToEdit = material;
+      }
+      else {
+        window.alert('Admins Only!!');
+      }
+    })
   }
 
   updateMaterial(material:Material){
@@ -62,12 +84,9 @@ export class MaterialComponent implements OnInit {
   }
 
   clearState(){
+    this.showPencil = true;
     this.editState = false;
     this.materialToEdit = null;
-  }
-
-  showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
   }
 
   showError() {
@@ -112,7 +131,7 @@ export class MaterialComponent implements OnInit {
         break;
       case 'quantity':
         this.materials = this.materials.filter(material => {
-          return (material.quantity) > 2;
+          return (material.quantity) <= 2;
         });
         this.currentFilter = 'quantity';
         break;

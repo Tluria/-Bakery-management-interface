@@ -1,7 +1,10 @@
-<div class="nav-side-menu">
+<div *ngIf="auth.user | async as user" class="nav-side-menu">
   <div class="menu-list">
     <ul id="menu-content" class="menu-content collapse out">
-      <li data-toggle="collapse" data-target="#material" class="collapsed first-item">
+      <li *ngIf="isWorker" class="first-item">
+          <a routerLink="/home">עמוד בית<span class="glyphicon glyphicon-home"></span></a>
+      </li>
+      <li *ngIf="isWorker" data-toggle="collapse" data-target="#material" class="collapsed">
         <a><span class="sub-arrow"></span>ניהול מלאי<span class="glyphicon glyphicon-cutlery"></span></a>
       </li>
       <ul class="sub-menu collapse" id="material">
@@ -9,7 +12,7 @@
         <li><a routerLink="/materials/create">הוספת מלאי</a></li>
       </ul>
 
-      <li data-toggle="collapse" data-target="#products" class="collapsed">
+      <li *ngIf="isWorker" data-toggle="collapse" data-target="#products" class="collapsed">
         <a><span class="sub-arrow"></span>ניהול מוצרים<span class="glyphicon glyphicon-apple"></span></a> 
       </li>
       <ul class="sub-menu collapse" id="products">
@@ -17,7 +20,7 @@
         <li><a routerLink="/products/create">הוספת מוצר</a></li>
       </ul>
 
-      <li data-toggle="collapse" data-target="#workshop" class="collapsed">
+      <li *ngIf="isWorker" data-toggle="collapse" data-target="#workshop" class="collapsed">
         <a><span class="sub-arrow"></span>ניהול סדנאות<span class="glyphicon glyphicon-tasks"></span></a>
       </li>
       <ul class="sub-menu collapse" id="workshop">
@@ -25,8 +28,25 @@
         <li><a routerLink="/workshops/create">הוספת סדנא</a></li>
       </ul>
 
-      <li><a href="#">הזמנה מספק<span class="glyphicon glyphicon-dashboard"></span></a></li>
-      <li><a routerLink="/calendar">עדכון לוח שנה<span class="glyphicon glyphicon-globe"></span></a></li>
+      <li *ngIf="isAdmin" data-toggle="collapse" data-target="#res-supplier" class="collapsed">
+        <a><span class="sub-arrow"></span>הזמנה מספק<span class="glyphicon glyphicon-shopping-cart"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="res-supplier">
+          <li><a routerLink="/reservations">הזמנות שלי</a></li>
+          <li><a routerLink="/reservations/create">הוספת הזמנה</a></li>
+      </ul>
+
+      <li *ngIf="isAdmin" data-toggle="collapse" data-target="#calendar" class="collapsed">
+        <a><span class="sub-arrow"></span>ניהול יומן<span class="glyphicon glyphicon-calendar"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="calendar">
+        <li><a routerLink="/calendar">לוח שנה</a></li>
+        <li><a routerLink="/calendar/create">הוספת אירוע</a></li>
+      </ul>
+
+      <li *ngIf="isSupplier" class="first-item">
+        <a routerLink="/reservations/display">הזמנות מעסק<span class="glyphicon glyphicon-th-list"></span></a>
+      </li>
     </ul>
   </div>
 </div>

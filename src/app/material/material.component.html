@@ -27,7 +27,7 @@
       <button class="btn"
           [class.btn-primary]="currentFilter === 'quantity'"
           (click)="filterBy('quantity')">
-          2 כמות גדולה מ 
+          2 כמות קטנה מ 
       </button>
 
       <button class="btn"
@@ -43,7 +43,7 @@
       <table class="tableDesign" *ngIf="materials?.length > 0">
         <thead>
           <tr>
-            <th>עדכון</th>
+            <th *ngIf="isAdmin">עדכון</th>
             <th>קריטי</th>
             <th>כמות</th>
             <th>שם</th>
@@ -52,45 +52,64 @@
           
         <tbody>
           <tr *ngFor="let material of materials">
-            <td><a routerLink="/materials" class="secondary-content">
-              <i (click)="editMaterial($event, material)" class="fa fa-pencil"></i>
-              <i  *ngIf="editState && materialToEdit.id == material.id" (click)="clearState()" class="fa fa-compress"></i>
+            <td *ngIf="isAdmin"><a routerLink="/materials" class="secondary-content">
+              <i *ngIf="showPencil" (click)="editMaterial($event, material)" class="fa fa-pencil"></i>
+              <i *ngIf="editState && materialToEdit.id == material.id" (click)="clearState()" class="fa fa-compress"></i>
             </a>
             <div *ngIf="editState && materialToEdit.id == material.id">
               <br>
-              <form (ngSubmit)="updateMaterial(material)" class="col s6">
-                  <div class="row">
-                    <div class="col s6">
-                        <label for="workname">כמות</label>
-                        <input type="number" [(ngModel)]="material.quantity"
+              <form (ngSubmit)="updateMaterial(material)" class="form-container">
+                <div class="row">
+                  <div class="col-md-auto">
+                    <div class="form-group col-md-6">
+                      <label for="quantity">כמות</label>
+                      <input class="form-control" 
+                        type="number" 
+                        [(ngModel)]="material.quantity"
                         name="quantity">
                     </div>
 
-                    <div class="col s6">
-                        <label for="workname">שם</label>
-                        <input type="text" [(ngModel)]="material.name"
+                    <div class="form-group col-md-6">
+                      <label for="name">שם</label>
+                      <input class="form-control" 
+                        type="text" 
+                        [(ngModel)]="material.name"
                         name="name">
                     </div>
 
-                    <div class="col s6 right">
-                        <label for="workname">קריטי</label>
-                        <input type="text" [(ngModel)]="material.critical"
+                    <div class="form-group col-md-6 pull-right">
+                      <label for="critical">קריטי</label>
+                      <input class="form-control" 
+                        type="text" 
+                        [(ngModel)]="material.critical"
                         name="critical">
                     </div>
                   </div>
-                  <input type="submit" value="עדכון" class="btn orange">
-                  <button (click)="deleteMaterial($event, material)" class="btn red">מחיקה</button>
+                </div> 
+                
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="submit" value="עדכון" class="btn btn-warning">
+                    <button (click)="deleteMaterial($event, material)" class="btn btn-danger">מחיקה</button>
+                  </div>
+                </div>
               </form>
-            </div></td>
+            </div>
+           </td>
             <td>{{ material.critical }}</td>
             <td>{{ material.quantity }}</td>
             <td>{{ material.name }}</td>
           </tr>
         </tbody>
       </table>
-    </div> 
+    </div>
   </div>
-  <div *ngIf="materials?.length == 0">
-    אין חומרי גלם
+  
+  <div class="row center_div_crud">
+    <div class="col-xs-12">
+      <div *ngIf="materials?.length == 0">
+        אין חומרי גלם
+      </div>
+    </div>
   </div>
 </div>  

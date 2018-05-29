@@ -8,6 +8,11 @@ body {
     background: #f5f6fa;
 }
 
+span.help-block {
+    color: rgb(172, 51, 51);
+    margin-right: 0px;
+}
+
 .scroll {
     overflow: scroll;
     height: 41em;
@@ -125,4 +130,22 @@ button.btn.search-btn i {
 button.btn.search-btn {
     height: 38px;
     margin-bottom: 21px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .row.center_div_crud {
+        width:80%;
+        margin-right: 123px;
+    }
+
+    .row.center_div {
+        margin-left: 82px;
+        width:60%;
+    }
 }

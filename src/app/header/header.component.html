@@ -1,5 +1,25 @@
+<!-- <div *ngIf="auth.user | async; then authenticated else guest">
+        
+</div> -->
+        
 <div class="header">
     <div class="user">
-       <a href="#"><h4>חלי יששכר</h4></a>
+        <ul class="nav navbar-nav navbar-left">
+            <li data-toggle="collapse" data-target="#users" class="dropdown">
+                <a *ngIf="auth.user | async as user" style="cursor: pointer;" class="dropdown-toggle" role="button">{{ user.displayName }}<span class="caret"></span></a>
+                <ul class="sub-menu collapse header-sub-menu" id="users">
+                    <li *ngIf="isAdmin" data-toggle="collapse" data-target="#users-manage" class="dropdown">
+                        <a style="cursor: pointer;"><span class="caret sub"></span>ניהול משתמשים</a>
+                    </li>
+                    <ul *ngIf="isAdmin" class="sub-menu user-sub-menu" id="users-manage">
+                        <li><a routerLink="/users">משתמשים קיימים</a></li>
+                        <li><a routerLink="/users/create">הוספת משתמש</a></li>
+                    </ul>
+
+                    <li><a (click)="auth.signOut()" style="cursor: pointer;">התנתק</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>
+

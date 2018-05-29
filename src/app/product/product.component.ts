@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Data, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/Product';
 import { DataSource } from '@angular/cdk/collections';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ViewContainerRef } from '@angular/core';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -14,14 +18,25 @@ export class ProductComponent implements OnInit {
   editState: boolean= false;
   productToEdit: Product;
   currentFilter = 'all';
+  showPencil: boolean = true;
+  isAdmin: boolean;
   
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, 
+              public toastr: ToastsManager, 
+              vcr: ViewContainerRef,
+              private route: ActivatedRoute,
+              public auth: AuthService) { 
+      this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(products => {
-      this.products=products;
-      this.copyProducts= this.products;
+    this.auth.user.subscribe(user => {
+      if(user.roles.admin == 'כן'){
+        this.isAdmin = true;
+      }
     })
+    this.products = this.route.snapshot.data['products'];
+    this.copyProducts = this.products;
   }
 
   onSearch(event) {
@@ -40,19 +55,30 @@ export class ProductComponent implements OnInit {
   updateProduct(product: Product){
     this.productService.updateProduct(product);
     this.clearState();
+    this.showWarning();
   }
 
   deleteProduct(event, product: Product ){
     this.clearState();
     this.productService.deleteProduct(product);
+    this.showError();
   }
 
   editProduct(event, product: Product){
-    this.editState= true;
-    this.productToEdit= product;
+    this.showPencil = false;
+    this.auth.user.subscribe(user => {
+      if(user.roles.admin == 'כן'){
+        this.editState= true;
+        this.productToEdit= product;
+      }
+      else {
+        window.alert('Admins Only!!');
+      }
+    })
   }
 
   clearState(){
+    this.showPencil = true;
     this.editState = false;
     this.productToEdit = null;
   }
@@ -78,4 +104,11 @@ export class ProductComponent implements OnInit {
     }
   }
 
+  showError() {
+    this.toastr.error('נמחק', '');
+  }
+
+  showWarning() {
+    this.toastr.warning('עודכן', '');
+  }
 }

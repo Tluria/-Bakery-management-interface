@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row center_div_crud">
+    <div class="col-xs-12">
+      <h2>הזמנות שלי</h2>
+    </div>
+  </div>
+
+  <div class="row center_div_crud">
+    <div class="col-xs-12">
+      <table class="tableDesign" *ngIf="reservations?.length > 0">
+        <thead>
+          <tr>
+            <th>עדכון</th>
+            <th>סטאטוס הזמנה</th>
+            <th>פרטי הזמנה</th>
+            <th>תאריך</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr *ngFor="let reservation of reservations">
+            <td>
+              <a routerLink="/reservations" class="secondary-content">
+                <i *ngIf="showPencil" (click)="editReservation($event,reservation)" class="fa fa-pencil"></i>
+                <i *ngIf="editState && reservationToEdit.id == reservation.id" (click)="clearState()" 
+                class="fa fa-compress"></i>
+              </a>
+              <div *ngIf="editState && reservationToEdit.id == reservation.id">
+                <form (ngSubmit)="updateReservation(reservation)" class="form-container">
+                  <div class="row">
+                    <div class="col-md-auto">
+                      <div class="form-group col-md-6">
+                        <label for="description">פרטי הזמנה</label>
+                        <textarea 
+                          class="form-control" 
+                          name="description" 
+                          [(ngModel)]="reservation.description" 
+                          rows="5">
+                        </textarea>
+                      </div>
+          
+                      <div class="form-group col-md-6">
+                        <label for="date">תאריך</label>
+                        <input class="form-control" 
+                          type="date" 
+                          [(ngModel)]="reservation.date"
+                          name= "date">
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <input type="submit" value="עדכן" class="btn btn-warning">
+                      <button (click)="deleteReservation($event,reservation)" class="btn btn-danger"> מחק</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </td>
+            <td>{{ reservation.status }}</td>
+            <td>{{ reservation.description }}</td>
+            <td>{{ reservation.date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> 

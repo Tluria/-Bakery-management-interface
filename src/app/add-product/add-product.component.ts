@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import {Product} from '../models/Product';
+import { Product } from '../models/Product';
 import { Material } from '../models/Material';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-add-product',
@@ -9,6 +11,8 @@ import { Material } from '../models/Material';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+
+  isProductExist: boolean;
   product: Product ={
     name:'',  
     price:null,
@@ -17,22 +21,58 @@ export class AddProductComponent implements OnInit {
     kosher:'',
     material:[],
   }
+  databaseProducts: Product[] = [];
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService, public toastr: ToastsManager, vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+   }
 
   ngOnInit() {
+    this.productService.getProducts().subscribe(res => {
+      this.databaseProducts = res;
+    })
   }
 
   onSubmit(){
+    this.isProductExist = false;
     if(this.product.name !='' && this.product.price >=0 && this.product.quantity >=0
-     && this.product.type !='' && this.product.kosher !='' && this.product.material !=null)
-     this.productService.addProduct(this.product);
-     this.product.name= '';
-     this.product.price= 0;
-     this.product.quantity=0;
-     this.product.type= '';
-     this.product.kosher= '';
-     this.product.material= null;
+     && this.product.type !='' && this.product.kosher !='' && this.product.material !=null){
+      if(this.isExit()) {
+        this.product.name='';
+        this.showError();
+      }
+      else {
+        this.productService.addProduct(this.product);
+        this.product.name= '';
+        this.product.price= 0;
+        this.product.quantity=0;
+        this.product.type= '';
+        this.product.kosher= '';
+        this.product.material= null;
+        this.showSuccess();
+      }  
+    }
   }
 
+  showSuccess() {
+    this.toastr.success('נוסף בהצלחה', 'Success!');
+  }
+
+  showError() {
+    this.toastr.error('מוצר קיים במערכת', '');
+  }
+
+  isExit(): boolean {
+    for(let m of this.databaseProducts){
+      if(m.name == this.product.name){
+        this.isProductExist = true;
+      }
+    }
+    if(this.isProductExist){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

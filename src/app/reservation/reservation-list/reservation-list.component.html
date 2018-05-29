@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-xs-12">
+    <app-reservation-item
+      *ngFor= "let reservation of reservations; let i=index"
+      [indexOf]="i"
+      [reservation]="reservation"
+      (reservationSelected)="onReservationSelected(reservation)"></app-reservation-item> 
+  </div>
+</div>

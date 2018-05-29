@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialService } from '../services/material.service';
-import {Material} from '../models/Material';
+import { Material } from '../models/Material';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
 
@@ -10,26 +10,40 @@ import { ViewContainerRef } from '@angular/core';
   styleUrls: ['./add-material.component.css']
 })
 export class AddMaterialComponent implements OnInit {
+ 
+  isMeterialExist: boolean;
   material:Material = {
     name:'',
     quantity:null,
     critical:''
   }
 
+  databaseMaterials: Material[] = [];
+
   constructor(private materialService:MaterialService, public toastr: ToastsManager, vcr: ViewContainerRef) { 
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
+    this.materialService.getMaterials().subscribe(res => {
+      this.databaseMaterials = res;
+    })
   }
 
-  onSubmit(){
+  onSubmit() {
+    this.isMeterialExist = false;
     if(this.material.name != '' && this.material.quantity != null && this.material.critical != null){
-      this.materialService.addMaterial(this.material);
-      this.material.name='';
-      this.material.quantity=null;
-      this.material.critical='';
-      this.showSuccess();
+      if(this.isExit()) {
+        this.material.name='';
+        this.showError();
+      }
+      else {
+        this.materialService.addMaterial(this.material);
+        this.material.name='';
+        this.material.quantity=null;
+        this.material.critical='';
+        this.showSuccess();
+      }
     }
   }
 
@@ -38,15 +52,20 @@ export class AddMaterialComponent implements OnInit {
   }
 
   showError() {
-    this.toastr.error('נמחק', '');
+    this.toastr.error('חומר גלם קיים במערכת', '');
   }
 
-  showWarning() {
-    this.toastr.warning('You are being warned.', 'Alert!');
+  isExit(): boolean {
+    for(let m of this.databaseMaterials){
+      if(m.name == this.material.name){
+        this.isMeterialExist = true;
+      }
+    }
+    if(this.isMeterialExist){
+      return true;
+    }
+    else {
+      return false;
+    }
   }
-
-  showInfo() {
-    this.toastr.info('Just some information for you.');
-  }
-
 }

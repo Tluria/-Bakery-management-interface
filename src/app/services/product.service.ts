@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx'
 import { Product } from '../models/Product';
 import { contains } from '@firebase/util';
 import { Subject } from 'rxjs/Subject';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
@@ -25,10 +26,6 @@ export class ProductService {
     });   
    }
 
-   getProducts(){
-     return this.products; 
-   }
-
    addProduct(product: Product){
      this.productsCollection.add(product);
    }
@@ -42,13 +39,23 @@ export class ProductService {
    updateProduct(product: Product){
     this.productDoc = this.afs.doc(`product/${product.id}`);
     this.productDoc.update(product);
-
   }
 
   getAllEntries(): Observable<any> {
     return this.afs.collection('product').valueChanges();
   }
 
+  getProducts() {
+    return this.afs.collection('product', ref => ref.orderBy('name', 'asc'))
+    .snapshotChanges()
+    .pipe(map((data: any) => {
+      return data.map(a => {
+       const d = a.payload.doc.data() as Product;
+       d.id = a.payload.doc.id;
+       return d;
+      })
+    }));
+  }
 }
 
 

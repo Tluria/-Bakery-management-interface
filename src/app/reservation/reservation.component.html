@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row center_div">
+      <div class="col-md-auto">
+        <h2>הוספת הזמנה</h2>
+          <form (ngSubmit)="onSubmit()" class="form-container">
+          <fieldset>
+            <legend class="text-center">טופס הזמנה</legend>
+            <div class="form-group col-md-12"> <!-- Date input -->
+              <label class="control-label" for="date">תאריך</label>
+              <input class="form-control" name="date" placeholder="MM/DD/YYY" type="date" [(ngModel)]="reservation.date" />
+            </div>
+            <!-- Message body -->
+            <div class="form-group col-md-12">
+              <label class="control-label" for="message">פרטי הזמנה</label>
+              <textarea class="form-control" name="message" placeholder="אנא הקלדי את הזמנתך" [(ngModel)]="reservation.description" rows="5"></textarea>
+            </div>
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">שלח</button>
+              </div>
+            </div>
+          </fieldset>
+          </form>
+      </div>
+  </div>
+</div>

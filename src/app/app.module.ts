@@ -1,14 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
-import appRoutes from './app.routes';
+import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
+import { appRoute } from './app.routes';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, CanActivate } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment.prod';
+import 'rxjs/add/operator/toPromise';
+
+//resolves
+import { ReservationResolve } from './services/reservation-resolve.service';
+import { MaterialResolve } from './services/material-resolve.service';
+import { ProductResolve } from './services/product-resolve.service';
+import { WorkshopResolve } from './services/workshop-resolve.service';
+import { CalendarResolve } from './services/calendar-resolve.service';
+import { UserResolve } from './services/user-resolve.service';
 
 
 // Modules
 import { AngularFireModule } from 'angularfire2';  
+import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -30,8 +42,11 @@ import { DemoUtilsModule } from './demo-utils/module';
 
 
 // Components
-import { AppComponent } from './app.component'; 
+import { AppComponent } from './app.component';
+import { UsersComponent } from './users/users.component';
 import { MaterialComponent } from './material/material.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { MyReservationsComponent } from './reservation/my-reservations/my-reservations.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddMaterialComponent } from './add-material/add-material.component';
 import { HeaderComponent } from './header/header.component';
@@ -47,6 +62,13 @@ import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
+import { ReservationItemComponent } from './reservation/reservation-item/reservation-item.component';
+import { ReservationDetailComponent } from './reservation/reservation-detail/reservation-detail.component';
+import { ReservationsDisplayComponent } from './reservation/reservations-display/reservations-display.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AddEventComponent } from './add-event/add-event.component';
 import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
 import { DateTimePickerComponent } from './calendar/mwl-calendar-month-view/mwl-calendar-month-view.component';
 
@@ -55,11 +77,14 @@ import { MaterialService } from './services/material.service';
 import { WorkshopService } from './services/workshop.service';  
 import { ProductService } from './services/product.service';
 import { CalendarService } from './services/calendar.service';
+import { ReservationService } from './services/reservation.service';
+import { UserService } from './services/user.service';
+import { UpdateReservationsService } from './services/update-reservations.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,  
     MaterialComponent, 
     NavbarComponent,
     AddMaterialComponent,
@@ -79,14 +104,26 @@ import { CalendarService } from './services/calendar.service';
     EditproductComponent,
     CalendarComponent,
     CalendarHeaderComponent,
-    DateTimePickerComponent
+    DateTimePickerComponent,
+    AddEventComponent,
+    ReservationComponent,
+    ReservationListComponent,
+    ReservationItemComponent,
+    ReservationDetailComponent,
+    ReservationsDisplayComponent,
+    UserProfileComponent,
+    UsersComponent,
+    AddUserComponent,
+    MyReservationsComponent 
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
-    BrowserModule, 
+    BrowserModule,
+    CoreModule,
     FormsModule,
+    appRoute,
     BrowserAnimationsModule, 
     CommonModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule, AngularFireStorageModule,
@@ -102,8 +139,23 @@ import { CalendarService } from './services/calendar.service';
     NgbModalModule.forRoot(),
     NgbDatepickerModule.forRoot(),
     NgbTimepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
-  providers: [MaterialService, WorkshopService, ProductService, CalendarService],
+  providers: [
+    MaterialResolve,
+    UserResolve,
+    ReservationResolve,
+    ProductResolve,
+    WorkshopResolve,
+    CalendarResolve,
+    MaterialService,   
+    WorkshopService, 
+    ProductService, 
+    CalendarService,
+    ReservationService,
+    UserService,
+    UpdateReservationsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

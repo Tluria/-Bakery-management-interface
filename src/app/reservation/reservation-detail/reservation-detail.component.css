@@ -1,0 +1,10 @@
+.rapper {
+    box-shadow: 1px 1px 5px 1px gray;
+    border-radius: 6px;
+    background: #fdfdfd;
+    padding: 0px 30px 20px 0px;
+}
+
+hr.md{
+    width: 90%;
+}

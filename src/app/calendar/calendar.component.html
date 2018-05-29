@@ -1,4 +1,4 @@
-<div class="container-fluid scroll">
+<div class="container-fluid">
   <div class="row center_div_crud">
     <h2>עדכון לוח שנה</h2>
     <hr>
@@ -33,13 +33,13 @@
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="activeDayIsOpen = false">
-            קודם
+             קודם
           </div>
           <div
             class="btn btn-outline-secondary"
             mwlCalendarToday
             [(viewDate)]="viewDate">
-            היום
+            חודש נוכחי
           </div>
           <div
             class="btn btn-primary"
@@ -47,34 +47,12 @@
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="activeDayIsOpen = false">
-            הבא
+             הבא
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
-      </div>
-      <div class="col-md-4">
-        <div class="btn-group">
-          <div
-            class="btn btn-primary"
-            (click)="view = 'month'"
-            [class.active]="view === 'month'">
-            חודש
-          </div>
-          <div
-            class="btn btn-primary"
-            (click)="view = 'week'"
-            [class.active]="view === 'week'">
-            שבוע
-          </div>
-          <div
-            class="btn btn-primary"
-            (click)="view = 'day'"
-            [class.active]="view === 'day'">
-            יום
-          </div>
-        </div>
       </div>
     </div>
       <br>
@@ -86,7 +64,6 @@
           [refresh]="refresh"
           [activeDayIsOpen]="activeDayIsOpen"
           (dayClicked)="dayClicked($event.day)"
-          (eventClicked)="handleEvent('Clicked', $event.event)"
           (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view
@@ -94,7 +71,6 @@
           [viewDate]="viewDate"
           [events]="events"
           [refresh]="refresh"
-          (eventClicked)="handleEvent('Clicked', $event.event)"
           (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-week-view>
         <mwl-calendar-day-view
@@ -102,7 +78,6 @@
           [viewDate]="viewDate"
           [events]="events"
           [refresh]="refresh"
-          (eventClicked)="handleEvent('Clicked', $event.event)"
           (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-day-view>
       </div>
@@ -111,11 +86,6 @@
       
       <div class="row">
         <div class="col-xs-10">
-          <button
-            class="btn btn-primary pull-left"
-            (click)="addEvent()">
-            צור אירוע
-          </button>
           <div class="clearfix"></div>
         </div>
         <div class="col-xs-2">
@@ -128,22 +98,32 @@
         <thead>
           <tr>
             <th class="text-right">עדכן</th>
-            <th class="text-right">נגמר</th>
-            <th class="text-right">מתחיל</th>
-            <th class="text-right">צבע משני</th>
-            <th class="text-right">צבע ראשי</th>
+            <th class="text-right">תאריך סיום</th>
+            <th class="text-right">תאריך התחלה</th>
             <th class="text-right">כותרת</th>
           </tr>
         </thead>
       
         <tbody>
-          <tr *ngFor="let event of events; let index = index">
-            <td>
-              <button
-                class="btn btn-danger"
-                (click)="events.splice(index, 1); refresh.next()">
-                מחק
-              </button>
+          <tr *ngFor="let event of events">
+            <td><a routerLink="/calendar" class="secondary-content">
+              <i (click)="editEvent($event, event)" class="fa fa-pencil"></i>
+              <i *ngIf="editState && eventToEdit.id == event.id" (click)="clearState()" class="fa fa-compress"></i>
+              </a>
+              <div *ngIf="editState && eventToEdit.id == event.id">
+                <form (ngSubmit)="updateEvent(event)">
+                  <input 
+                    type="submit" 
+                    value="עדכון" 
+                    class="btn btn-warning">
+                  <hr>
+                  <button
+                    class="btn btn-danger"
+                    (click)="deleteEvent($event, event)">
+                    מחק
+                  </button>
+                </form>  
+              </div>
             </td>
             <td>
               <mwl-demo-utils-date-time-picker
@@ -158,18 +138,6 @@
                 (ngModelChange)="refresh.next()"
                 placeholder="Not set">
               </mwl-demo-utils-date-time-picker>
-            </td>
-            <td>
-              <input
-                type="color"
-                [(ngModel)]="event.color.secondary"
-                (change)="refresh.next()">
-            </td>
-            <td>
-              <input
-                type="color"
-                [(ngModel)]="event.color.primary"
-                (change)="refresh.next()">
             </td>
             <td>
               <input

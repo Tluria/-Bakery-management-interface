@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isAdmin: boolean;
+
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.user.subscribe(user => {
+      if(user.roles.admin == 'כן'){
+        this.isAdmin = true;
+      }
+    })
   }
 
 }

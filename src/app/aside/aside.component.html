@@ -1,6 +1,6 @@
-<div class="aside">
+<div *ngIf="auth.user | async as user" class="aside">
   <div class="logo">
-    <a routerLink=""><img src="\assets\logo.PNG" height="110" width="110"></a>
+    <a routerLink="/home"><img src="\assets\logo.PNG" height="110" width="110"></a>
   </div>
   <app-aside-nav></app-aside-nav>
 </div>

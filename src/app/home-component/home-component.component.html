@@ -1,55 +1,24 @@
 <div class="container-fluid"> 
-  <h2 id="margin_right">בית</h2>
-
-  <div class="graph">
-    <div class="header">
-      מוצרים נמכרים- כמות
-    </div>
-    <div class="main">
-      <ngx-charts-pie-chart *ngIf="chartData"
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="productData"
-        [explodeSlices]="explodeSlices"
-        [labels]="showLabels"
-        [doughnut]="doughnut">
-    </ngx-charts-pie-chart>
-    </div>
-  </div>
-
-  <div class="graph">
-    <div class="header">
-      סדנאות נמכרות- כמות משתתפים
-    </div>
-    <div class="main">
-      <ngx-charts-pie-chart *ngIf="chartData"
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="workshopData"
-        [explodeSlices]="explodeSlices"
-        [labels]="showLabels"
-        [doughnut]="doughnut">
-     </ngx-charts-pie-chart>
-    </div>
-  </div>
-
-  <div class="graph clear">
-      <div class="header">
-        סדנאות נמכרות- כמות משתתפים
+  <div class="row">
+    <div class="col-md-12">
+      <h2 id="margin_right">בית</h2>
+      <div class="graph">
+        <div class="header">
+          מוצרים נמכרים- כמות
+        </div>
+        <div class="main">
+          <ngx-charts-pie-chart *ngIf="chartData"
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="productData"
+            [explodeSlices]="explodeSlices"
+            [labels]="showLabels"
+            [doughnut]="doughnut">
+          </ngx-charts-pie-chart> 
+        </div>
       </div>
-      <div class="main">
-        <ngx-charts-pie-chart *ngIf="chartData"
-          [view]="view"
-          [scheme]="colorScheme"
-          [results]="workshopData"
-          [explodeSlices]="explodeSlices"
-          [labels]="showLabels"
-          [doughnut]="doughnut">
-       </ngx-charts-pie-chart>
-      </div>
-    </div>
-
-    <div class="graph">
+    
+      <div class="graph">
         <div class="header">
           סדנאות נמכרות- כמות משתתפים
         </div>
@@ -64,4 +33,47 @@
          </ngx-charts-pie-chart>
         </div>
       </div>
+    
+      <div class="graph clear">
+        <div class="header">
+          אירועים קרובים
+        </div>
+        <div class="main-event">
+          <table class="tableDesign" *ngIf="events?.length > 0">
+            <thead>
+              <tr>
+                <th>תאריך סיום</th>
+                <th>תאריך התחלה</th>
+                <th>תיאור האירוע</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let event of events;  let i=index">
+                  <td *ngIf="i < 4">{{ event.end }}</td>
+                  <td *ngIf="i < 4">{{ event.start }}</td>
+                  <td *ngIf="i < 4">{{ event.title }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="graph">
+        <div class="header">
+          מלאי בשימוש-כמות
+        </div>
+        <div class="main">
+          <ngx-charts-pie-chart *ngIf="chartData"
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="materialData"
+            [explodeSlices]="explodeSlices"
+            [labels]="showLabels"
+            [doughnut]="doughnut">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
+    </div>
+  </div>
 </div> 

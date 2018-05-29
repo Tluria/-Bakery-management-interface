@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row center_div">
+      <div class="col-md-auto">
+        <h2>הוספת משתמש</h2>
+        <form (ngSubmit)="onSubmit()" class="form-container">
+          <div class="form-group col-md-6">
+            <label for="pass">סיסמא</label>
+            <input class="form-control" 
+              type="password" 
+              [(ngModel)]="password"
+              name="pass">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="email">אימייל</label>
+            <input class="form-control" 
+              type="text" 
+              [(ngModel)]="email"
+              name="email">
+          </div>
+          <input type="submit" value="הוספה" class="clear btn btn-primary btn-form">
+        </form>
+      </div>
+    </div>
+  </div>
+  
