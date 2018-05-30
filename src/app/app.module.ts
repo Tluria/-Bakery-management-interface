@@ -94,6 +94,8 @@ import { UpdateReservationsService } from './services/update-reservations.servic
     MainComponent,
     WorkshopComponent,
     AddWorkshopComponent,
+    HomeComponentComponent,
+    EditWorkshopComponent,
     ProductComponent,
     AddProductComponent,
     HomeComponentComponent,
@@ -158,4 +160,6 @@ import { UpdateReservationsService } from './services/update-reservations.servic
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+

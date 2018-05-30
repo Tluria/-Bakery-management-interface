@@ -8,9 +8,14 @@ body {
     background: #f5f6fa;
 }
 
+<<<<<<< HEAD
 span.help-block {
     color: rgb(172, 51, 51);
     margin-right: 0px;
+=======
+.btn.prime {
+    background-color: #34495e;
+>>>>>>> e0d9c192f2579983c482a1e5a4bbdbedfd8d5cda
 }
 
 .scroll {
