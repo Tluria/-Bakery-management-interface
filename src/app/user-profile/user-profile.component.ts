@@ -30,42 +30,36 @@ export class UserProfileComponent implements OnInit {
   }
 
   emailLogin() {
-    this.auth.emailSignIn(this.user.email, this.user.password);
+    this.isUserExist = false;
+    if(this.isExit()) {
+      this.auth.emailSignIn(this.user.email, this.user.password);
+    }
+    else {
+      this.showError();
+    }
   }
 
   ngOnInit() {
-    // this.userService.getUsers().subscribe(res => {
-    //   this.databaseUsers = res;
-    // })
+    this.userService.getUsers().subscribe(res => {
+      this.databaseUsers = res;
+    })
   }
 
-  // emailLogin() {
-  //   this.isUserExist = true;
-  //   if(this.user.email != '' && this.user.password != ''){
-  //     if(this.isExit()) {
-  //       this.router.navigate(['/home']);
-  //     }
-  //     else {
-  //       this.showError();
-  //     }
-  //   }
-  // }
+  showError() {
+    this.toastr.error('אימייל או סיסמא לא נכונים', '');
+  }
 
-  // isExit(): boolean {
-  //   for(let m of this.databaseUsers){
-  //     if(m.email == this.user.email && m.password == this.user.password){
-  //       this.isUserExist = true;
-  //     }
-  //   }
-  //   if(this.isUserExist){
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
-  // }
-
-  // showError() {
-  //   this.toastr.error('משתמש לא קיים', '');
-  // }
+  isExit(): boolean {
+    for(let m of this.databaseUsers){
+      if(m.email == this.user.email && m.password == this.user.password){
+        this.isUserExist = true;
+      }
+    }
+    if(this.isUserExist){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

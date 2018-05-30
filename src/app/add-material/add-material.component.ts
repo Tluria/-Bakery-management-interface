@@ -45,6 +45,9 @@ export class AddMaterialComponent implements OnInit {
         this.showSuccess();
       }
     }
+    else {
+      this.showWarning();
+    }
   }
 
   showSuccess() {
@@ -53,6 +56,10 @@ export class AddMaterialComponent implements OnInit {
 
   showError() {
     this.toastr.error('חומר גלם קיים במערכת', '');
+  }
+
+  showWarning() {
+    this.toastr.warning('חייב למלא את כל השדות', '');
   }
 
   isExit(): boolean {

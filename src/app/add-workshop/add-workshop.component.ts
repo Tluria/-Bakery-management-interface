@@ -49,6 +49,9 @@ export class AddWorkshopComponent implements OnInit {
        this.showSuccess();
       }
      }
+     else {
+      this.showWarning();
+    }
   }
 
   showSuccess() {
@@ -57,6 +60,10 @@ export class AddWorkshopComponent implements OnInit {
  
   showError() {
     this.toastr.error('סדנא קיימת במערכת', '');
+  }
+
+  showWarning() {
+    this.toastr.warning('חייב למלא את כל השדות', '');
   }
 
   isExit(): boolean {

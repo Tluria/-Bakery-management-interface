@@ -91,7 +91,7 @@ export class AuthService {
           supplier: 'כן'
         }
       }
-      return userRef.set(data)
+      return userRef.set(data, { merge: true })
     }
     else if(user.email == 'admin@walla.com'){
       const data: User = {
@@ -104,7 +104,7 @@ export class AuthService {
           admin: 'כן'
         }
       }
-      return userRef.set(data)
+      return userRef.set(data, { merge: true })
     }
     else if(user.email == 'worker@walla.com'){
       const data: User = {
@@ -116,7 +116,7 @@ export class AuthService {
           editor: 'כן'
         }
       }
-      return userRef.set(data)
+      return userRef.set(data, { merge: true })
     }
     else {
       const data: User = {
@@ -127,7 +127,7 @@ export class AuthService {
           subscriber: 'כן'
         }
       }
-      return userRef.set(data)
+      return userRef.set(data, { merge: true })
     }
   }
 

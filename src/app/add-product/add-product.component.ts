@@ -52,6 +52,9 @@ export class AddProductComponent implements OnInit {
         this.showSuccess();
       }  
     }
+    else {
+      this.showWarning();
+    }
   }
 
   showSuccess() {
@@ -60,6 +63,10 @@ export class AddProductComponent implements OnInit {
 
   showError() {
     this.toastr.error('מוצר קיים במערכת', '');
+  }
+
+  showWarning() {
+    this.toastr.warning('חייב למלא את כל השדות', '');
   }
 
   isExit(): boolean {

@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <h1>הזמנות מעסק</h1>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col-s-7">
             <h2>:פרטי הזמנה</h2>
             <app-reservation-detail
                 *ngIf="selectedReservation; else infoText"
@@ -14,7 +14,7 @@
             </ng-template>
         </div>
     
-        <div class="col-md-4">
+        <div class="col-md-4 col-s-4">
             <h2>:רשימת הזמנות</h2>
             <app-reservation-list
                 (reservationWasSelected)="selectedReservation = $event">

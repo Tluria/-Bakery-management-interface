@@ -37,6 +37,9 @@ export class ReservationComponent implements OnInit {
       this.reservation.description='';
       this.showSuccess();
     }
+    else {
+      this.showWarning();
+    }
   }
   
   clearState(){
@@ -53,6 +56,6 @@ export class ReservationComponent implements OnInit {
   }
 
   showWarning() {
-    this.toastr.warning('עודכן', '');
+    this.toastr.warning('חייב למלא את כל השדות', '');
   }
 }

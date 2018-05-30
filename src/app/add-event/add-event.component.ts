@@ -44,13 +44,21 @@ export class AddEventComponent implements OnInit {
       this.showSuccess();
       }
     }
+    else {
+      this.showWarning();
+    }
   }
 
   showSuccess() {
     this.toastr.success('נוסף בהצלחה', 'Success!');
   }
+
   showError() {
     this.toastr.error('אירוע קיים במערכת', '');
+  }
+
+  showWarning() {
+    this.toastr.warning('חייב למלא את כל השדות', '');
   }
 
   isExit(): boolean {

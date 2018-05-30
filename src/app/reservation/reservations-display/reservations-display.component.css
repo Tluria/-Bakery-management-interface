@@ -1,0 +1,20 @@
+@media only screen and (max-width: 1024px) {
+    h1{
+        margin-right: 78px;
+    }
+
+    .col-s-7 { width: 58.33%; }
+}
+
+@media only screen and (max-width: 768px) {
+    h1{
+        margin-right: 100px;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+        margin-left: 198px;
+    }
+
+    .col-s-4 { width: 86%; }
+}
