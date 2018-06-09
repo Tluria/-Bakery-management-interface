@@ -1,5 +1,7 @@
 # FinalProject
 
+The system, is an inventory management system for a home-made Bakery that provides models of inventory, products and workshops management, provider order management and calendar management.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
 ## Development server
@@ -25,3 +27,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Technical informational video 
+https://www.youtube.com/watch?v=J4fue77WbDA
