@@ -30,3 +30,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Technical informational video 
 https://www.youtube.com/watch?v=J4fue77WbDA
+
+## Demo
+https://bakery-management-interface.firebaseapp.com
